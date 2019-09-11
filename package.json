@@ -1,0 +1,95 @@
+{
+  "name": "stasisgg-client",
+  "productName": "stasisgg-client",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Ryo Nakatani",
+    "email": "right.rcon.f@outlook.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "stasisgg_client"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/renderer/index.html",
+                  "js": "./src/renderer/index.tsx",
+                  "name": "main_window"
+                }
+              ]
+            },
+            "loggerPort": 9001
+          }
+        ]
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.45",
+    "@electron-forge/maker-deb": "6.0.0-beta.45",
+    "@electron-forge/maker-rpm": "6.0.0-beta.45",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.45",
+    "@electron-forge/maker-zip": "6.0.0-beta.45",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.45",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@types/electron-load-devtool": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
+    "@typescript-eslint/parser": "^2.2.0",
+    "css-loader": "^3.0.0",
+    "electron": "6.0.8",
+    "electron-load-devtool": "^1.2.0",
+    "eslint": "^6.3.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-standard": "^4.0.1",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3"
+  }
+}

@@ -1,11 +1,7 @@
-module.exports = {
-  /**
-   * This is the main entry point for your application, it's the first file
-   * that runs in the main process.
-   */
-  entry: './src/main/index.ts',
-  // Put your normal webpack config below here
-  module: {
-    rules: require('./webpack.rules')
-  }
-};
+// eslint-disable-next-line import/no-extraneous-dependencies
+const merge = require('webpack-merge');
+const base = require('./webpack.base.config');
+
+module.exports = merge(base, {
+  entry: './src/main/index.ts'
+});

@@ -4,7 +4,8 @@ module.exports = {
     es6: true
   },
   extends: [
-    'standard'
+    'standard',
+    'plugin:react/recommended'
   ],
   globals: {
     Atomics: 'readonly',
@@ -23,6 +24,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'semi': ['error', 'always']
+    'semi': ['error', 'always'],
   }
 }

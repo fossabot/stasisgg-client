@@ -1,13 +1,6 @@
-const rules = require('./webpack.rules');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const merge = require('webpack-merge');
+const base = require('./webpack.base.config');
 
-rules.push({
-  test: /\.css$/,
-  use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+module.exports = merge(base, {
 });
-
-module.exports = {
-  // Put your normal webpack config below here
-  module: {
-    rules
-  }
-};

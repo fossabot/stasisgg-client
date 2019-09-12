@@ -9,11 +9,12 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": {
-    "name": "Ryo Nakatani",
+    "name": "R-NK",
     "email": "right.rcon.f@outlook.com"
   },
   "license": "MIT",
@@ -95,8 +96,10 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
     "node-loader": "^0.6.0",
     "style-loader": "^0.23.1",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^6.1.0",
     "typescript": "^3.6.3",
     "webpack-cli": "^3.3.8"

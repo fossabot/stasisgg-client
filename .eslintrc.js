@@ -5,7 +5,11 @@ module.exports = {
   },
   extends: [
     'standard',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "prettier/standard",
   ],
   globals: {
     Atomics: 'readonly',

@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const Content = styled.div`
-  padding: 0px;
   height: 100%;
   background-color: white;
 `;
 
 const MenuItem = styled(NavLink)`
   display: block;
-  padding: 16px 0px;
+  padding: 16px;
   color: #757575;
   text-decoration: none;
 

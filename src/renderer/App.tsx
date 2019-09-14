@@ -7,7 +7,7 @@ import MainContents from 'src/renderer/components/router/Router';
 const App = (): JSX.Element => (
   <div>
     <MemoryRouter>
-      <MySidebar docked={true} open={true} shadow={true}>
+      <MySidebar docked={true} open={true} shadow={true} transitions={false}>
         <MainContents />
       </MySidebar>
     </MemoryRouter>

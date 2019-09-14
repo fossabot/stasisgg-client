@@ -6,6 +6,7 @@ type SidebarProps = {
   docked: boolean;
   open: boolean;
   shadow: boolean;
+  transitions: boolean;
   children: React.ReactNode;
 };
 
@@ -13,6 +14,7 @@ const MySidebar: React.FC<SidebarProps> = ({
   docked,
   open,
   shadow,
+  transitions,
   children
 }: SidebarProps) => (
   <Sidebar
@@ -20,6 +22,7 @@ const MySidebar: React.FC<SidebarProps> = ({
     docked={docked}
     open={open}
     shadow={shadow}
+    transitions={transitions}
   >
     {children}
   </Sidebar>

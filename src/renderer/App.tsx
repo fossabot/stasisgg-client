@@ -1,14 +1,17 @@
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
-import Home from 'src/renderer/views/Home/Home';
-import Preference from 'src/renderer/views/Preference/Preference';
+import MySidebar from 'src/renderer/components/sidebar/Sidebar';
+import MainContents from 'src/renderer/components/router/Router';
 
-const App = () => (
-  <MemoryRouter>
-    <Route exact path="/" component={Home} />
-    <Route path="/Preference" component={Preference} />
-  </MemoryRouter>
+const App = (): JSX.Element => (
+  <div>
+    <MemoryRouter>
+      <MySidebar docked={true} open={true} shadow={true}>
+        <MainContents />
+      </MySidebar>
+    </MemoryRouter>
+  </div>
 );
 
 export default hot(App);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Preference = () => (
+const Preference = (): JSX.Element => (
   <div>This page would be a nice preference page someday.</div>
 );
 

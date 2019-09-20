@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Home from 'src/renderer/views/Home/Home';
-import Preference from 'src/renderer/views/Preference/Preference';
+import RecentGames from 'src/renderer/views/RecentGames';
+import Preference from 'src/renderer/views/Preference';
 
 const routes = [
   {
     path: '/',
     exact: true,
-    main: Home
+    main: RecentGames
   },
   {
     path: '/Preference',

@@ -5,12 +5,12 @@ module.exports = {
   },
   extends: [
     'standard',
-    "plugin:@typescript-eslint/recommended",
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react",
-    "prettier/standard",
+    'prettier',
+    'prettier/@typescript-eslint',
+    'prettier/react',
+    'prettier/standard',
   ],
   globals: {
     Atomics: 'readonly',
@@ -26,9 +26,12 @@ module.exports = {
   },
   plugins: [
     'react',
+    'react-hooks',
     '@typescript-eslint'
   ],
   rules: {
     'semi': ['error', 'always'],
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn' // Checks effect dependencies
   }
 }

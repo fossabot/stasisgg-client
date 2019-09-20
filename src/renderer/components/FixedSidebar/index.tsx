@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
-import SidebarContent from 'src/renderer/components/sidebar/SidebarContent';
+import SidebarContent from 'src/renderer/components/FixedSidebar/SidebarContent';
 
 type SidebarProps = {
   docked: boolean;

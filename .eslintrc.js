@@ -7,7 +7,7 @@ module.exports = {
     'standard',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
     'prettier/react',
     'prettier/standard',
@@ -30,7 +30,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'semi': ['error', 'always'],
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
     'react-hooks/exhaustive-deps': 'warn' // Checks effect dependencies
   }

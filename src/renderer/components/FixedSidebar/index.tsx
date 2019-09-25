@@ -26,6 +26,6 @@ const MySidebar: React.FC<SidebarProps> = ({
   >
     {children}
   </Sidebar>
-)
+);
 
 export default MySidebar;

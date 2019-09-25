@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import RecentGames from 'src/renderer/views/RecentGames';
-import Preference from 'src/renderer/views/Preference';
+import Library from 'src/renderer/views/Library';
 
 const routes = [
   {
@@ -10,9 +10,9 @@ const routes = [
     main: RecentGames
   },
   {
-    path: '/Preference',
+    path: '/Library',
     exact: true,
-    main: Preference
+    main: Library
   }
 ];
 

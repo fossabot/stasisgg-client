@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Content = styled.div`
   height: 100%;
+  width: 260px;
   background-color: #2A2E32;
 `;
 
@@ -26,8 +27,8 @@ const SidebarContent = (): JSX.Element => (
     <MenuItem exact to="/" activeClassName="selected">
       Home
     </MenuItem>
-    <MenuItem exact to="/Preference" activeClassName="selected">
-      Preference
+    <MenuItem exact to="/Library" activeClassName="selected">
+      Library
     </MenuItem>
   </Content>
 );

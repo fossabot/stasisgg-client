@@ -1,4 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ProfileContainer = styled.div`
+  height: 180px;
+  display: flex;
+`;
 
 type ProfileProps = {
   summonerId: string;
@@ -8,7 +14,7 @@ type ProfileProps = {
 };
 
 const PlayerProfile: React.FC<ProfileProps> = (props: ProfileProps) => (
-  <div>{props.profileIconURL}</div>
+  <ProfileContainer>{props.profileIconURL}</ProfileContainer>
 );
 
 export default PlayerProfile;

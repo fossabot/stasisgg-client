@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import PlayerProfile from 'src/renderer/components/PlayerProfile';
 import HomeIcon from 'src/icons/home-24px.svg';
 import LibraryIcon from 'src/icons/video_library-24px.svg';
 
@@ -38,6 +39,12 @@ const MenuItemRow = styled(NavLink)`
 
 const SidebarContent = (): JSX.Element => (
   <SidebarContainer>
+    <PlayerProfile
+      summonerId="id"
+      summonerName="name"
+      summonerLevel="100"
+      profileIconURL="url"
+    />
     <MenuItemRow exact to="/" activeClassName="selected">
       <MenuItemContainer>
         <HomeIcon />

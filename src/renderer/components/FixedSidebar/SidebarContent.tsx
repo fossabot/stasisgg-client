@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import HomeIcon from 'src/icons/home-24px.svg';
+import LibraryIcon from 'src/icons/video_library-24px.svg'
 
 const SidebarContainer = styled.div`
   height: 100%;
@@ -44,7 +45,10 @@ const SidebarContent = (): JSX.Element => (
       </MenuItemContainer>
     </MenuItemRow>
     <MenuItemRow exact to="/Library" activeClassName="selected">
-      Library
+      <MenuItemContainer>
+        <LibraryIcon />
+        <MenuItemText>Library</MenuItemText>
+      </MenuItemContainer>
     </MenuItemRow>
   </SidebarContainer>
 );

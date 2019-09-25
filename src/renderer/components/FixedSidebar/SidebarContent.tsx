@@ -4,20 +4,20 @@ import { NavLink } from 'react-router-dom';
 
 const Content = styled.div`
   height: 100%;
-  background-color: white;
+  background-color: #2A2E32;
 `;
 
 const MenuItem = styled(NavLink)`
   display: block;
   padding: 16px;
-  color: #757575;
+  color: #E9E7EB;
   text-decoration: none;
 
   &.selected {
-    color: #037bfc;
+    color: #8795C6;
   }
   &:hover {
-    background-color: #99999922;
+    background-color: rgba(81, 92, 107, 0.5);
   }
 `;
 

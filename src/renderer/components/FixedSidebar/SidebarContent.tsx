@@ -41,9 +41,9 @@ const SidebarContent = (): JSX.Element => (
   <SidebarContainer>
     <PlayerProfile
       summonerId="id"
-      summonerName="name"
+      summonerName="TheLongestName77"
       summonerLevel="100"
-      profileIconURL="url"
+      profileIconURL="https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/4293.png"
     />
     <MenuItemRow exact to="/" activeClassName="selected">
       <MenuItemContainer>

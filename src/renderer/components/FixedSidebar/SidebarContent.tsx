@@ -7,7 +7,7 @@ import LibraryIcon from 'src/icons/video_library-24px.svg';
 
 const SidebarContainer = styled.div`
   height: 100%;
-  width: 260px;
+  width: 280px;
   background-color: #2a2e32;
 `;
 

@@ -24,7 +24,10 @@ const IconContainer = styled.div`
 const NameAndLevelContainer = styled.div`
   margin-left: 13px;
   margin-bottom: 26px;
+  margin-right: 16px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 type ProfileProps = {

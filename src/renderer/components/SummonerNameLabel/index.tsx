@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NameLabel = styled.label`
-  font-size: 20px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.8);
 `;
 

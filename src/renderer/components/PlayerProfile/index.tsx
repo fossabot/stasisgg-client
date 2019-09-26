@@ -21,7 +21,7 @@ type ProfileProps = {
 const PlayerProfile: React.FC<ProfileProps> = (props: ProfileProps) => (
   <ProfileContainer>
     <IconContainer>
-      <ProfileIcon profileIconURL={props.profileIconURL} />
+      <ProfileIcon profileIconURL={props.profileIconURL} height={'52px'} />
     </IconContainer>
   </ProfileContainer>
 );

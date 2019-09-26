@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import defaultImage from 'src/icons/-1.png';
 
 const Icon = styled.img<{ height: string | undefined }>`
-  height: ${({ height }): string => height || '52px'};
+  height: ${({ height }): string => height || '100px'};
+  border-radius: 50%;
+  border: 1px solid #2c4873;
 `;
 
 type ProfileProps = {

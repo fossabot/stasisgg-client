@@ -4,11 +4,16 @@ import { NavLink } from 'react-router-dom';
 import PlayerProfile from 'src/renderer/components/PlayerProfile';
 import HomeIcon from 'src/icons/home-24px.svg';
 import LibraryIcon from 'src/icons/video_library-24px.svg';
+import BottomGrayBorder from 'src/renderer/components/BottomGrayBorder';
 
 const SidebarContainer = styled.div`
   height: 100%;
   width: 280px;
   background-color: #2a2e32;
+`;
+
+const MainMenuContainer = styled.div`
+  padding: 13px 0 13px 0;
 `;
 
 const MenuItemContainer = styled.div`
@@ -23,7 +28,7 @@ const MenuItemText = styled.div`
 
 const MenuItemRow = styled(NavLink)`
   display: block;
-  padding: 1em;
+  padding: 1em 1em 1em 2em;
   color: #e9e7eb;
   fill: #e9e7eb;
   text-decoration: none;
@@ -45,18 +50,22 @@ const SidebarContent = (): JSX.Element => (
       summonerLevel={396}
       profileIconURL="https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/4293.png"
     />
-    <MenuItemRow exact to="/" activeClassName="selected">
-      <MenuItemContainer>
-        <HomeIcon />
-        <MenuItemText>Home</MenuItemText>
-      </MenuItemContainer>
-    </MenuItemRow>
-    <MenuItemRow exact to="/Library" activeClassName="selected">
-      <MenuItemContainer>
-        <LibraryIcon />
-        <MenuItemText>Library</MenuItemText>
-      </MenuItemContainer>
-    </MenuItemRow>
+    <BottomGrayBorder />
+    <MainMenuContainer>
+      <MenuItemRow exact to="/" activeClassName="selected">
+        <MenuItemContainer>
+          <HomeIcon />
+          <MenuItemText>Home</MenuItemText>
+        </MenuItemContainer>
+      </MenuItemRow>
+      <MenuItemRow exact to="/Library" activeClassName="selected">
+        <MenuItemContainer>
+          <LibraryIcon />
+          <MenuItemText>Library</MenuItemText>
+        </MenuItemContainer>
+      </MenuItemRow>
+    </MainMenuContainer>
+    <BottomGrayBorder />
   </SidebarContainer>
 );
 

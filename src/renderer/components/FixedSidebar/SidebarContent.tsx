@@ -42,6 +42,12 @@ const MenuItemRow = styled(NavLink)`
   }
 `;
 
+const MenuHeader = styled.label`
+  font-size: 16px;
+  color: #4e5a67;
+  margin-left: 13px;
+`;
+
 const SidebarContent = (): JSX.Element => (
   <SidebarContainer>
     <PlayerProfile
@@ -66,6 +72,9 @@ const SidebarContent = (): JSX.Element => (
       </MenuItemRow>
     </MainMenuContainer>
     <BottomGrayBorder />
+    <MainMenuContainer>
+      <MenuHeader>Settings</MenuHeader>
+    </MainMenuContainer>
   </SidebarContainer>
 );
 

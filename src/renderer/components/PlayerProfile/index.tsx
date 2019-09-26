@@ -8,13 +8,16 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-bottom-width: 0.5px;
+  border-bottom-color: #4e5a67;
+  border-bottom-style: solid;
 `;
 
 const IconContainer = styled.div`
   height: 100%;
   margin-left: 13px;
   display: flex;
-  align-items: center;
+  margin-top: 50px;
 `;
 
 const NameAndLevelContainer = styled.div`

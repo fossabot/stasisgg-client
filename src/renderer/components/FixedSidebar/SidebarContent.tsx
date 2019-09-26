@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PlayerProfile from 'src/renderer/components/PlayerProfile';
 import HomeIcon from 'src/icons/home-24px.svg';
 import LibraryIcon from 'src/icons/video_library-24px.svg';
+import BottomGrayBorder from 'src/renderer/components/BottomGrayBorder';
 
 const SidebarContainer = styled.div`
   height: 100%;
@@ -49,6 +50,7 @@ const SidebarContent = (): JSX.Element => (
       summonerLevel={396}
       profileIconURL="https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/4293.png"
     />
+    <BottomGrayBorder />
     <MainMenuContainer>
       <MenuItemRow exact to="/" activeClassName="selected">
         <MenuItemContainer>
@@ -63,6 +65,7 @@ const SidebarContent = (): JSX.Element => (
         </MenuItemContainer>
       </MenuItemRow>
     </MainMenuContainer>
+    <BottomGrayBorder />
   </SidebarContainer>
 );
 

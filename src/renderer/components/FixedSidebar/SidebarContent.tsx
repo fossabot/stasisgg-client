@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import PlayerProfile from 'src/renderer/components/PlayerProfile';
 import HomeIcon from 'src/icons/home-24px.svg';
 import LibraryIcon from 'src/icons/video_library-24px.svg';
+import SettingsIcon from 'src/icons/settings-24px.svg';
 import BottomGrayBorder from 'src/renderer/components/BottomGrayBorder';
 
 const SidebarContainer = styled.div`
@@ -42,10 +43,11 @@ const MenuItemRow = styled(NavLink)`
   }
 `;
 
-const MenuHeader = styled.label`
+const MenuHeader = styled.div`
   font-size: 16px;
   color: #4e5a67;
   margin-left: 13px;
+  margin-bottom: 13px;
 `;
 
 const SidebarContent = (): JSX.Element => (
@@ -74,6 +76,12 @@ const SidebarContent = (): JSX.Element => (
     <BottomGrayBorder />
     <MainMenuContainer>
       <MenuHeader>Settings</MenuHeader>
+      <MenuItemRow exact to="/Settings" activeClassName="selected">
+        <MenuItemContainer>
+          <SettingsIcon />
+          <MenuItemText>Main Settings</MenuItemText>
+        </MenuItemContainer>
+      </MenuItemRow>
     </MainMenuContainer>
   </SidebarContainer>
 );

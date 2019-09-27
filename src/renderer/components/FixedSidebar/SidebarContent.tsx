@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import PlayerProfile from 'src/renderer/components/PlayerProfile';
-import HomeIcon from 'src/icons/home-24px.svg';
-import LibraryIcon from 'src/icons/video_library-24px.svg';
+import HomeIcon from 'src/icons/home-26px.svg';
+import LibraryIcon from 'src/icons/video_library-26px.svg';
+import SettingsIcon from 'src/icons/settings-26px.svg';
+import AccountIcon from 'src/icons/account_circle-26px.svg';
+import AboutIcon from 'src/icons/about-26px.svg';
 import BottomGrayBorder from 'src/renderer/components/BottomGrayBorder';
 
 const SidebarContainer = styled.div`
@@ -42,6 +45,13 @@ const MenuItemRow = styled(NavLink)`
   }
 `;
 
+const MenuHeader = styled.div`
+  font-size: 16px;
+  color: #4e5a67;
+  margin-left: 13px;
+  margin-bottom: 13px;
+`;
+
 const SidebarContent = (): JSX.Element => (
   <SidebarContainer>
     <PlayerProfile
@@ -62,6 +72,28 @@ const SidebarContent = (): JSX.Element => (
         <MenuItemContainer>
           <LibraryIcon />
           <MenuItemText>Library</MenuItemText>
+        </MenuItemContainer>
+      </MenuItemRow>
+    </MainMenuContainer>
+    <BottomGrayBorder />
+    <MainMenuContainer>
+      <MenuHeader>Settings</MenuHeader>
+      <MenuItemRow exact to="/Preference" activeClassName="selected">
+        <MenuItemContainer>
+          <SettingsIcon />
+          <MenuItemText>Preference</MenuItemText>
+        </MenuItemContainer>
+      </MenuItemRow>
+      <MenuItemRow exact to="/Account" activeClassName="selected">
+        <MenuItemContainer>
+          <AccountIcon />
+          <MenuItemText>Account</MenuItemText>
+        </MenuItemContainer>
+      </MenuItemRow>
+      <MenuItemRow exact to="/About" activeClassName="selected">
+        <MenuItemContainer>
+          <AboutIcon />
+          <MenuItemText>About</MenuItemText>
         </MenuItemContainer>
       </MenuItemRow>
     </MainMenuContainer>

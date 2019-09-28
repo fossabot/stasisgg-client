@@ -76,6 +76,7 @@
     "react-hot-loader": "^4.12.12",
     "react-router-dom": "^5.0.1",
     "react-sidebar": "^3.0.2",
+    "typeface-raleway": "^0.0.75",
     "typeface-roboto": "^0.0.75"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import MySidebar from 'src/renderer/components/FixedSidebar';
 import MainContents from 'src/renderer/components/Router';
 import 'typeface-roboto/index.css';
+import 'typeface-raleway/index.css';
 import '@openfonts/noto-sans-jp_japanese';
 import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`

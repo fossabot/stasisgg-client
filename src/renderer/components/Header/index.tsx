@@ -1,12 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-const HeaderLabel = styled.label`
-  font-family: 'Raleway';
-  font-weight: 300;
-  font-size: 24px;
-  letter-spacing: 0.1em;
-  color: #e9e7eb;
+interface HeaderLabelProps {
+  sub?: boolean;
+}
+
+const HeaderLabel = styled.label<HeaderLabelProps>`
+  ${(props: HeaderLabelProps): FlattenSimpleInterpolation =>
+    props.sub
+      ? css`
+          font-family: 'Raleway';
+          font-weight: 300;
+          font-size: 18px;
+          letter-spacing: 0.1em;
+          color: rgba(255, 255, 255, 0.5);
+        `
+      : css`
+          font-family: 'Raleway';
+          font-weight: 300;
+          font-size: 24px;
+          letter-spacing: 0.1em;
+          color: #e9e7eb;
+        `}
 `;
 
 const HeaderContainer = styled.div`
@@ -15,11 +30,12 @@ const HeaderContainer = styled.div`
 
 type HeaderProps = {
   children: React.ReactNode;
+  sub?: boolean;
 };
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => (
   <HeaderContainer>
-    <HeaderLabel>{props.children}</HeaderLabel>
+    <HeaderLabel sub={props.sub}>{props.children}</HeaderLabel>
   </HeaderContainer>
 );
 

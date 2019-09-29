@@ -18,7 +18,7 @@ const Preference = (): JSX.Element => (
       <Container fixed>
         <Header>PREFERENCE</Header>
         <ProfileContainer>
-          <label>Profile</label>
+          <Header sub>Profile</Header>
         </ProfileContainer>
       </Container>
     </MarginContainer>

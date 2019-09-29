@@ -35,7 +35,7 @@ type InputFieldProps = {
 };
 
 const InputField: React.FC<InputFieldProps> = (props: InputFieldProps) => (
-  <StyledTextField variant="outlined" label={props.label} />
+  <StyledTextField variant="outlined" label={props.label} fullWidth={true} />
 );
 
 export default InputField;

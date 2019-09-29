@@ -52,11 +52,35 @@ const StyledSelect = styled(({ className, ...props }) => (
   }
 `;
 
+interface Region {
+  value: string;
+  displayName: string;
+}
+
 const Preference = (): JSX.Element => {
   const [region, setRegion] = React.useState('NA');
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>): void => {
     setRegion(event.target.value as string);
   };
+  const regions: Region[] = [
+    { value: 'BR', displayName: 'BR' },
+    { value: 'EUNE', displayName: 'EUNE' },
+    { value: 'EUW', displayName: 'EUW' },
+    { value: 'JP', displayName: 'JP' },
+    { value: 'KR', displayName: 'KR' },
+    { value: 'LAN', displayName: 'LAN' },
+    { value: 'LAS', displayName: 'LAS' },
+    { value: 'NA', displayName: 'NA' },
+    { value: 'OCE', displayName: 'OCE' },
+    { value: 'TR', displayName: 'TR' },
+    { value: 'RU', displayName: 'RU' }
+  ];
+  const regionItems = regions.map(region => (
+    <MenuItem key={region.value} value={region.value}>
+      {region.displayName}
+    </MenuItem>
+  ));
+
   return (
     <MainPageTheme>
       <MarginContainer>
@@ -69,8 +93,7 @@ const Preference = (): JSX.Element => {
                 <InputField label="Summoner Name" />
                 <StyledFormControl variant="outlined">
                   <StyledSelect value={region} onChange={handleChange}>
-                    <MenuItem value={'JP'}>JP</MenuItem>
-                    <MenuItem value={'NA'}>NA</MenuItem>
+                    {regionItems}
                   </StyledSelect>
                 </StyledFormControl>
               </FormRowContainer>

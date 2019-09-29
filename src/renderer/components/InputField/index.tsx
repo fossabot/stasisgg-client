@@ -6,7 +6,7 @@ const StyledTextField = styled(TextField)`
   .MuiOutlinedInput-root {
     background: #2a2e32;
     height: 40px;
-    color: #e9e7eb;
+    color: rgba(233, 231, 235, 0.8);
     font-family: 'Roboto', 'Noto Sans JP', sans-serif;
     fieldset {
       border: 1px solid #4e5a67;

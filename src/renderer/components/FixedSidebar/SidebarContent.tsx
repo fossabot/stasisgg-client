@@ -13,6 +13,7 @@ const SidebarContainer = styled.div`
   height: 100%;
   width: 280px;
   background-color: #2a2e32;
+  border-right: 0.5px solid rgba(78, 90, 103, 0.9);
 `;
 
 const MainMenuContainer = styled.div`

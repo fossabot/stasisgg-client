@@ -6,13 +6,23 @@ import Header from 'src/renderer/components/Header';
 import InputField from 'src/renderer/components/InputField';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
+import MyButton from 'src/renderer/components/MyButton';
 
 const MarginContainer = styled.div`
+  height: calc(100vh - 4em);
   margin: 2em 0 2em 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ProfileContainer = styled.div`
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+`;
+
+const FormContainer = styled.form`
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;
@@ -54,6 +64,12 @@ const StyledSelect = styled(({ className, ...props }) => (
   }
 `;
 
+const MyButtonContainer = styled.div`
+  min-width: 200px;
+  align-self: center;
+  margin-top: auto;
+`;
+
 interface Region {
   value: string;
   displayName: string;
@@ -86,8 +102,8 @@ const Preference = (): JSX.Element => {
   return (
     <MainPageTheme>
       <MarginContainer>
-        <Container fixed>
-          <form>
+        <Container fixed style={{ height: '100%' }}>
+          <FormContainer>
             <Header>PREFERENCE</Header>
             <ProfileContainer>
               <Header sub>Profile</Header>
@@ -100,7 +116,10 @@ const Preference = (): JSX.Element => {
                 </StyledFormControl>
               </FormRowContainer>
             </ProfileContainer>
-          </form>
+            <MyButtonContainer>
+              <MyButton>APPLY</MyButton>
+            </MyButtonContainer>
+          </FormContainer>
         </Container>
       </MarginContainer>
     </MainPageTheme>

@@ -13,6 +13,9 @@ const GlobalStyles = createGlobalStyle`
   * {
     font-family: 'Roboto', 'Noto Sans JP', sans-serif;
   }
+  html, body {
+    margin: 0;
+  }
 `;
 
 const App = (): JSX.Element => (

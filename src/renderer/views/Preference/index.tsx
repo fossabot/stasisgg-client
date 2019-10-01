@@ -7,6 +7,7 @@ import InputField from 'src/renderer/components/InputField';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MyButton from 'src/renderer/components/MyButton';
+import WarningSharpIcon from '@material-ui/icons/WarningSharp';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -25,6 +26,15 @@ const FormContainer = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  * + * {
+    margin-left: 16px;
+  }
 `;
 
 const FormRowContainer = styled.div`
@@ -104,7 +114,10 @@ const Preference = (): JSX.Element => {
       <MarginContainer>
         <Container fixed style={{ height: '100%' }}>
           <FormContainer>
-            <Header>PREFERENCE</Header>
+            <HeaderContainer>
+              <Header>PREFERENCE</Header>
+              <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
+            </HeaderContainer>
             <ProfileContainer>
               <Header sub>Profile</Header>
               <FormRowContainer>

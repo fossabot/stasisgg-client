@@ -119,7 +119,9 @@ const Preference = (): JSX.Element => {
               <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
             </HeaderContainer>
             <ProfileContainer>
-              <Header sub>Profile</Header>
+              <HeaderContainer>
+                <Header sub>Profile</Header>
+              </HeaderContainer>
               <FormRowContainer>
                 <InputField label="Summoner Name" />
                 <StyledFormControl variant="outlined">

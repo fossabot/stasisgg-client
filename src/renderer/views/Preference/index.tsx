@@ -87,7 +87,9 @@ interface Region {
 
 const Preference = (): JSX.Element => {
   const [region, setRegion] = React.useState('NA');
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>): void => {
+  const handleSelectChange = (
+    event: React.ChangeEvent<{ value: unknown }>
+  ): void => {
     setRegion(event.target.value as string);
   };
   const regions: Region[] = [
@@ -109,6 +111,8 @@ const Preference = (): JSX.Element => {
     </MenuItem>
   ));
 
+  const [isChanged, setIsChanged] = React.useState(false);
+
   return (
     <MainPageTheme>
       <MarginContainer>
@@ -116,16 +120,21 @@ const Preference = (): JSX.Element => {
           <FormContainer>
             <HeaderContainer>
               <Header>PREFERENCE</Header>
-              <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
+              {isChanged && (
+                <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
+              )}
             </HeaderContainer>
             <ProfileContainer>
               <HeaderContainer>
                 <Header sub>Profile</Header>
               </HeaderContainer>
               <FormRowContainer>
-                <InputField label="Summoner Name" />
+                <InputField
+                  label="Summoner Name"
+                  onChange={(): void => setIsChanged(true)}
+                />
                 <StyledFormControl variant="outlined">
-                  <StyledSelect value={region} onChange={handleChange}>
+                  <StyledSelect value={region} onChange={handleSelectChange}>
                     {regionItems}
                   </StyledSelect>
                 </StyledFormControl>

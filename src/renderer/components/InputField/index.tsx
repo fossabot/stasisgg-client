@@ -32,10 +32,16 @@ const StyledTextField = styled(TextField)`
 
 type InputFieldProps = {
   label: string;
+  onChange: () => void | undefined;
 };
 
 const InputField: React.FC<InputFieldProps> = (props: InputFieldProps) => (
-  <StyledTextField variant="outlined" label={props.label} fullWidth={true} />
+  <StyledTextField
+    variant="outlined"
+    label={props.label}
+    fullWidth={true}
+    onChange={props.onChange}
+  />
 );
 
 export default InputField;

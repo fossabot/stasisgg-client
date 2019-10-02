@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import { Container, MenuItem } from '@material-ui/core';
@@ -85,6 +85,11 @@ interface Region {
   displayName: string;
 }
 
+type State = {
+  isChanged: boolean;
+  summoner_name: string;
+};
+
 const Preference = (): JSX.Element => {
   const [region, setRegion] = React.useState('NA');
   const handleSelectChange = (
@@ -111,7 +116,30 @@ const Preference = (): JSX.Element => {
     </MenuItem>
   ));
 
-  const [isChanged, setIsChanged] = React.useState(false);
+  const summonerName = '';
+
+  const [state, update] = useState<State>({
+    isChanged: false,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    summoner_name: ''
+  });
+  const onChangeInputText = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      let isInputChanged = false;
+      if (event.target.value !== summonerName) {
+        isInputChanged = true;
+      } else {
+        isInputChanged = false;
+      }
+      event.persist();
+      update(prev => ({
+        ...prev,
+        [event.target.name]: event.target.value,
+        isChanged: isInputChanged
+      }));
+    },
+    []
+  );
 
   return (
     <MainPageTheme>
@@ -120,7 +148,7 @@ const Preference = (): JSX.Element => {
           <FormContainer>
             <HeaderContainer>
               <Header>PREFERENCE</Header>
-              {isChanged && (
+              {state.isChanged && (
                 <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
               )}
             </HeaderContainer>
@@ -130,8 +158,9 @@ const Preference = (): JSX.Element => {
               </HeaderContainer>
               <FormRowContainer>
                 <InputField
+                  name="summoner_name"
                   label="Summoner Name"
-                  onChange={(): void => setIsChanged(true)}
+                  onChange={onChangeInputText}
                 />
                 <StyledFormControl variant="outlined">
                   <StyledSelect value={region} onChange={handleSelectChange}>

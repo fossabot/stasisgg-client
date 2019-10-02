@@ -31,12 +31,14 @@ const StyledTextField = styled(TextField)`
 `;
 
 type InputFieldProps = {
+  name: string;
   label: string;
-  onChange: () => void | undefined;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
 };
 
 const InputField: React.FC<InputFieldProps> = (props: InputFieldProps) => (
   <StyledTextField
+    name={props.name}
     variant="outlined"
     label={props.label}
     fullWidth={true}

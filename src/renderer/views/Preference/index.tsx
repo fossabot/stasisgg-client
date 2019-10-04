@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { MainPageTheme } from 'src/renderer/components/theme';
@@ -8,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MyButton from 'src/renderer/components/MyButton';
 import WarningSharpIcon from '@material-ui/icons/WarningSharp';
+import store from 'src/renderer/PersistentStore';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -87,16 +89,12 @@ interface Region {
 
 type State = {
   isChanged: boolean;
+  region: string;
   summoner_name: string;
+  summoner_id: string;
 };
 
 const Preference = (): JSX.Element => {
-  const [region, setRegion] = React.useState('NA');
-  const handleSelectChange = (
-    event: React.ChangeEvent<{ value: unknown }>
-  ): void => {
-    setRegion(event.target.value as string);
-  };
   const regions: Region[] = [
     { value: 'BR', displayName: 'BR' },
     { value: 'EUNE', displayName: 'EUNE' },
@@ -116,17 +114,23 @@ const Preference = (): JSX.Element => {
     </MenuItem>
   ));
 
-  const summonerName = '';
+  const settings = store.getAll();
+  const persistentState: Omit<State, 'isChanged'> = {
+    region: settings.region,
+    summoner_name: settings.summonerName,
+    summoner_id: settings.summonerId
+  };
 
   const [state, update] = useState<State>({
     isChanged: false,
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    summoner_name: ''
+    region: 'NA',
+    summoner_name: '',
+    summoner_id: ''
   });
   const onChangeInputText = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       let isInputChanged = false;
-      if (event.target.value !== summonerName) {
+      if (event.target.value !== persistentState[event.target.name]) {
         isInputChanged = true;
       } else {
         isInputChanged = false;
@@ -138,8 +142,17 @@ const Preference = (): JSX.Element => {
         isChanged: isInputChanged
       }));
     },
-    []
+    [persistentState]
   );
+
+  const handleSelectChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    update(prev => ({
+      ...prev,
+      region: event.target.value
+    }));
+  };
 
   return (
     <MainPageTheme>
@@ -163,7 +176,10 @@ const Preference = (): JSX.Element => {
                   onChange={onChangeInputText}
                 />
                 <StyledFormControl variant="outlined">
-                  <StyledSelect value={region} onChange={handleSelectChange}>
+                  <StyledSelect
+                    value={state.region}
+                    onChange={handleSelectChange}
+                  >
                     {regionItems}
                   </StyledSelect>
                 </StyledFormControl>

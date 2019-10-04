@@ -20,7 +20,7 @@ const createWindow = (): void => {
     minHeight: 800,
     minWidth: 960,
     webPreferences: {
-      nodeIntegration: false,
+      nodeIntegration: true,
       contextIsolation: true
     }
   });

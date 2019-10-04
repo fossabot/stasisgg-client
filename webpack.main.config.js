@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable @typescript-eslint/no-var-requires */
 const merge = require('webpack-merge');
 const base = require('./webpack.base.config');
 

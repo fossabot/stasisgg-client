@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MyButton from 'src/renderer/components/MyButton';
 import WarningSharpIcon from '@material-ui/icons/WarningSharp';
-import store from 'src/renderer/PersistentStore';
+import store, { StoreSchema } from 'src/renderer/PersistentStore';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -115,17 +115,15 @@ const Preference = (): JSX.Element => {
   ));
 
   const settings = store.getAll();
-  const persistentState: Omit<State, 'isChanged'> = {
+  const persistentState: StoreSchema = {
     region: settings.region,
-    summoner_name: settings.summonerName,
-    summoner_id: settings.summonerId
+    summoner_name: settings.summoner_name,
+    summoner_id: settings.summoner_id
   };
 
-  const [state, update] = useState<State>({
+  const [state, updateInputState] = useState<State>({
     isChanged: false,
-    region: 'NA',
-    summoner_name: '',
-    summoner_id: ''
+    ...persistentState
   });
   const onChangeInputText = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -136,7 +134,7 @@ const Preference = (): JSX.Element => {
         isInputChanged = false;
       }
       event.persist();
-      update(prev => ({
+      updateInputState(prev => ({
         ...prev,
         [event.target.name]: event.target.value,
         isChanged: isInputChanged
@@ -148,10 +146,15 @@ const Preference = (): JSX.Element => {
   const handleSelectChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    update(prev => ({
+    updateInputState(prev => ({
       ...prev,
       region: event.target.value
     }));
+  };
+
+  const handleButtonOnClick = (): void => {
+    store.saveAll(state);
+    console.log(store.getAll());
   };
 
   return (
@@ -186,7 +189,7 @@ const Preference = (): JSX.Element => {
               </FormRowContainer>
             </ProfileContainer>
             <MyButtonContainer>
-              <MyButton>APPLY</MyButton>
+              <MyButton OnClick={handleButtonOnClick}>APPLY</MyButton>
             </MyButtonContainer>
           </FormContainer>
         </Container>

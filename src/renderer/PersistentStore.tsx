@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
 import low, { AdapterSync } from 'lowdb';
-const remote = require('electron').remote;
-const app = remote.app;
 const FileSync: AdapterSync = require('lowdb/adapters//FileSync');
 const fs = require('fs');
 const path = require('path');
+const remote = require('electron').remote;
+const app = remote.app;
 
 export interface StoreSchema {
   region: string;

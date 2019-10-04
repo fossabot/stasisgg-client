@@ -33,6 +33,7 @@ const StyledTextField = styled(TextField)`
 type InputFieldProps = {
   name: string;
   label: string;
+  value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
 };
 
@@ -43,6 +44,7 @@ const InputField: React.FC<InputFieldProps> = (props: InputFieldProps) => (
     label={props.label}
     fullWidth={true}
     onChange={props.onChange}
+    value={props.value}
   />
 );
 

@@ -155,6 +155,10 @@ const Preference = (): JSX.Element => {
   const handleButtonOnClick = (): void => {
     store.saveAll(state);
     console.log(store.getAll());
+    updateInputState(prev => ({
+      ...prev,
+      isChanged: false
+    }));
   };
 
   return (
@@ -176,6 +180,7 @@ const Preference = (): JSX.Element => {
                 <InputField
                   name="summoner_name"
                   label="Summoner Name"
+                  value={state.summoner_name}
                   onChange={onChangeInputText}
                 />
                 <StyledFormControl variant="outlined">

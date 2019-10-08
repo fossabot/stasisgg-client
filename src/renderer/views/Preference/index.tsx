@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import useAxios from 'axios-hooks';
+import axios from 'axios';
 import { PathReporter } from 'io-ts/lib/PathReporter';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import { Container, MenuItem } from '@material-ui/core';
@@ -156,37 +156,24 @@ const Preference = (): JSX.Element => {
     }));
   };
 
-  const [{ data, loading, error }, reFetch] = useAxios(
-    {
-      url: API.getPlayerProfile,
-      params: {
-        summonerName: state.summoner_name,
-        region: state.region
-      }
-    },
-    {
-      manual: true
-    }
-  );
-
   const handleButtonOnClick = async (): Promise<void> => {
-    console.log(state);
-    await reFetch(
-      {
+    const res = await axios
+      .get(API.getPlayerProfile, {
         params: {
-          summonerName: state.summoner_name,
-          region: state.region
+          region: state.region,
+          summonerName: state.summoner_name
         }
-      },
-      { useCache: false }
-    );
-    if (data) {
-      if (PlayerProfileResponse.is(data)) {
-        console.log('response', data);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    if (res) {
+      if (PlayerProfileResponse.is(res.data)) {
+        console.log('response', res.data);
         store.saveAll({
           region: state.region,
-          summoner_id: data.message.summonerId,
-          summoner_name: data.message.summonerName
+          summoner_id: res.data.message.summonerId,
+          summoner_name: res.data.message.summonerName
         });
         console.log(store.getAll());
         updateInputState(prev => ({
@@ -194,10 +181,10 @@ const Preference = (): JSX.Element => {
           isChanged: false
         }));
       } else {
-        console.log(PathReporter.report(PlayerProfileResponse.decode(data)));
+        console.log(
+          PathReporter.report(PlayerProfileResponse.decode(res.data))
+        );
       }
-    } else if (error) {
-      console.log(error.response);
     }
   };
 

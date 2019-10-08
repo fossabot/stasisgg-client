@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+import useAxios from 'axios-hooks';
+import { PathReporter } from 'io-ts/lib/PathReporter';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import { Container, MenuItem } from '@material-ui/core';
 import Header from 'src/renderer/components/Header';
@@ -10,6 +12,8 @@ import FormControl from '@material-ui/core/FormControl';
 import MyButton from 'src/renderer/components/MyButton';
 import WarningSharpIcon from '@material-ui/icons/WarningSharp';
 import store, { StoreSchema } from 'src/renderer/PersistentStore';
+import { PlayerProfileResponse } from 'src/@types/api';
+import API from 'src/renderer/API';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -96,17 +100,17 @@ type State = {
 
 const Preference = (): JSX.Element => {
   const regions: Region[] = [
-    { value: 'BR', displayName: 'BR' },
-    { value: 'EUNE', displayName: 'EUNE' },
-    { value: 'EUW', displayName: 'EUW' },
-    { value: 'JP', displayName: 'JP' },
-    { value: 'KR', displayName: 'KR' },
-    { value: 'LAN', displayName: 'LAN' },
-    { value: 'LAS', displayName: 'LAS' },
-    { value: 'NA', displayName: 'NA' },
-    { value: 'OCE', displayName: 'OCE' },
-    { value: 'TR', displayName: 'TR' },
-    { value: 'RU', displayName: 'RU' }
+    { value: 'br', displayName: 'BR' },
+    { value: 'eune', displayName: 'EUNE' },
+    { value: 'euw', displayName: 'EUW' },
+    { value: 'jp', displayName: 'JP' },
+    { value: 'kr', displayName: 'KR' },
+    { value: 'lan', displayName: 'LAN' },
+    { value: 'las', displayName: 'LAS' },
+    { value: 'na', displayName: 'NA' },
+    { value: 'oce', displayName: 'OCE' },
+    { value: 'tr', displayName: 'TR' },
+    { value: 'ru', displayName: 'RU' }
   ];
   const regionItems = regions.map(region => (
     <MenuItem key={region.value} value={region.value}>
@@ -152,13 +156,49 @@ const Preference = (): JSX.Element => {
     }));
   };
 
-  const handleButtonOnClick = (): void => {
-    store.saveAll(state);
-    console.log(store.getAll());
-    updateInputState(prev => ({
-      ...prev,
-      isChanged: false
-    }));
+  const [{ data, loading, error }, reFetch] = useAxios(
+    {
+      url: API.getPlayerProfile,
+      params: {
+        summonerName: state.summoner_name,
+        region: state.region
+      }
+    },
+    {
+      manual: true
+    }
+  );
+
+  const handleButtonOnClick = async (): Promise<void> => {
+    console.log(state);
+    await reFetch(
+      {
+        params: {
+          summonerName: state.summoner_name,
+          region: state.region
+        }
+      },
+      { useCache: false }
+    );
+    if (data) {
+      if (PlayerProfileResponse.is(data)) {
+        console.log('response', data);
+        store.saveAll({
+          region: state.region,
+          summoner_id: data.message.summonerId,
+          summoner_name: data.message.summonerName
+        });
+        console.log(store.getAll());
+        updateInputState(prev => ({
+          ...prev,
+          isChanged: false
+        }));
+      } else {
+        console.log(PathReporter.report(PlayerProfileResponse.decode(data)));
+      }
+    } else if (error) {
+      console.log(error.response);
+    }
   };
 
   return (

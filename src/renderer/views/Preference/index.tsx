@@ -3,6 +3,7 @@ import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { PathReporter } from 'io-ts/lib/PathReporter';
+import { useSnackbar } from 'notistack';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import { Container, MenuItem } from '@material-ui/core';
 import Header from 'src/renderer/components/Header';
@@ -156,6 +157,8 @@ const Preference = (): JSX.Element => {
     }));
   };
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const handleButtonOnClick = async (): Promise<void> => {
     const res = await axios
       .get(API.getPlayerProfile, {
@@ -166,6 +169,9 @@ const Preference = (): JSX.Element => {
       })
       .catch(error => {
         console.log(error.response);
+        if (error.response.status === 404) {
+          enqueueSnackbar('Invalid Summoner Name.', { variant: 'error' });
+        }
       });
     if (res) {
       if (PlayerProfileResponse.is(res.data)) {

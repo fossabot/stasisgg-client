@@ -1,8 +1,19 @@
+import * as t from 'io-ts';
+
 const baseURL =
   'https://m52z4grtsa.execute-api.ap-northeast-1.amazonaws.com/dev';
 
-const API = {
+export const API = {
   getPlayerProfile: `${baseURL}/get-player-profile`
 };
 
-export default API;
+const PlayerProfile = t.type({
+  summonerId: t.string,
+  summonerName: t.string,
+  summonerLevel: t.number,
+  profileIconURL: t.string
+});
+
+export const PlayerProfileResponse = t.type({
+  message: PlayerProfile
+});

@@ -13,8 +13,7 @@ import FormControl from '@material-ui/core/FormControl';
 import MyButton from 'src/renderer/components/MyButton';
 import WarningSharpIcon from '@material-ui/icons/WarningSharp';
 import store, { StoreSchema } from 'src/renderer/PersistentStore';
-import { PlayerProfileResponse } from 'src/@types/api';
-import API from 'src/renderer/API';
+import { API, PlayerProfileResponse } from 'src/renderer/API';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);

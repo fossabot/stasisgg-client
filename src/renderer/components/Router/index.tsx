@@ -24,7 +24,7 @@ const routes = [
 ];
 
 const MainContents = (): JSX.Element => (
-  <SnackbarProvider>
+  <SnackbarProvider autoHideDuration={3000}>
     {routes.map((route, index) => (
       // Render more <Route>s with the same paths as
       // above, but different components this time.

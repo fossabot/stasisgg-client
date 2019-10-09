@@ -50,7 +50,7 @@ const FormRowContainer = styled.div`
 
 const StyledFormControl = styled(FormControl)`
   padding-left: 16px;
-  min-width: auto;
+  min-width: 80px;
   .MuiOutlinedInput-root {
     height: 40px;
     background: #2a2e32;

@@ -186,6 +186,7 @@ const Preference = (): JSX.Element => {
           ...prev,
           isChanged: false
         }));
+        enqueueSnackbar('Settings have been saved.', { variant: 'success' });
       } else {
         console.log(
           PathReporter.report(PlayerProfileResponse.decode(res.data))

@@ -24,19 +24,13 @@ const HeaderLabel = styled.label<HeaderLabelProps>`
         `}
 `;
 
-const HeaderContainer = styled.div`
-  margin-bottom: 16px;
-`;
-
 type HeaderProps = {
   children: React.ReactNode;
   sub?: boolean;
 };
 
 const Header: React.FC<HeaderProps> = (props: HeaderProps) => (
-  <HeaderContainer>
-    <HeaderLabel sub={props.sub}>{props.children}</HeaderLabel>
-  </HeaderContainer>
+  <HeaderLabel sub={props.sub}>{props.children}</HeaderLabel>
 );
 
 export default Header;

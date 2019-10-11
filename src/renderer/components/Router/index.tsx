@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 import RecentGames from 'src/renderer/views/RecentGames';
 import Library from 'src/renderer/views/Library';
 import Preference from 'src/renderer/views/Preference';
@@ -23,7 +24,7 @@ const routes = [
 ];
 
 const MainContents = (): JSX.Element => (
-  <div>
+  <SnackbarProvider autoHideDuration={3000}>
     {routes.map((route, index) => (
       // Render more <Route>s with the same paths as
       // above, but different components this time.
@@ -34,7 +35,7 @@ const MainContents = (): JSX.Element => (
         component={route.main}
       />
     ))}
-  </div>
+  </SnackbarProvider>
 );
 
 export default MainContents;

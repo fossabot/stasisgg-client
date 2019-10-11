@@ -20,10 +20,11 @@ const StyledButton = styled(Button)`
 
 type MyButtonProps = {
   children: React.ReactNode;
+  OnClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 const MyButton: React.FC<MyButtonProps> = (props: MyButtonProps) => (
-  <StyledButton variant="outlined" fullWidth={true}>
+  <StyledButton variant="outlined" fullWidth={true} onClick={props.OnClick}>
     {props.children}
   </StyledButton>
 );

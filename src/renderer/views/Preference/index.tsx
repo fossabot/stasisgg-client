@@ -6,7 +6,7 @@ import { PathReporter } from 'io-ts/lib/PathReporter';
 import { useSnackbar } from 'notistack';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import { Container, MenuItem } from '@material-ui/core';
-import { ScaleLoader } from 'react-spinners/';
+import ScaleLoader from 'react-spinners/ScaleLoader';
 import Header from 'src/renderer/components/Header';
 import InputField from 'src/renderer/components/InputField';
 import Select from '@material-ui/core/Select';

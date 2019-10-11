@@ -6,6 +6,7 @@ import { PathReporter } from 'io-ts/lib/PathReporter';
 import { useSnackbar } from 'notistack';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import { Container, MenuItem } from '@material-ui/core';
+import { ScaleLoader } from 'react-spinners/';
 import Header from 'src/renderer/components/Header';
 import InputField from 'src/renderer/components/InputField';
 import Select from '@material-ui/core/Select';
@@ -157,8 +158,10 @@ const Preference = (): JSX.Element => {
   };
 
   const { enqueueSnackbar } = useSnackbar();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonOnClick = async (): Promise<void> => {
+    setIsLoading(true);
     const res = await axios
       .get(API.getPlayerProfile, {
         params: {
@@ -192,6 +195,7 @@ const Preference = (): JSX.Element => {
         );
       }
     }
+    setIsLoading(false);
   };
 
   return (
@@ -227,7 +231,14 @@ const Preference = (): JSX.Element => {
               </FormRowContainer>
             </ProfileContainer>
             <MyButtonContainer>
-              <MyButton OnClick={handleButtonOnClick}>APPLY</MyButton>
+              <MyButton OnClick={handleButtonOnClick}>
+                {isLoading ? null : 'APPLY'}
+                <ScaleLoader
+                  height={16}
+                  color={'rgba(233, 231, 235, 1.0)'}
+                  loading={isLoading}
+                />
+              </MyButton>
             </MyButtonContainer>
           </FormContainer>
         </Container>

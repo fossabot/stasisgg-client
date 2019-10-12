@@ -13,7 +13,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MyButton from 'src/renderer/components/MyButton';
 import WarningSharpIcon from '@material-ui/icons/WarningSharp';
-import store, { StoreSchema } from 'src/renderer/PersistentStore';
+import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
 import { API, PlayerProfileResponse } from 'src/renderer/API';
 
 const MarginContainer = styled.div`
@@ -119,16 +119,11 @@ const Preference = (): JSX.Element => {
     </MenuItem>
   ));
 
-  const settings = store.getAll();
-  const persistentState: StoreSchema = {
-    region: settings.region,
-    summoner_name: settings.summoner_name,
-    summoner_id: settings.summoner_id
-  };
+  const persistentState = PersistentStoreContainer.useContainer();
 
   const [state, updateInputState] = useState<State>({
     isChanged: false,
-    ...persistentState
+    ...persistentState.persistentStore
   });
   const onChangeInputText = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -178,12 +173,11 @@ const Preference = (): JSX.Element => {
     if (res) {
       if (PlayerProfileResponse.is(res.data)) {
         console.log('response', res.data);
-        store.saveAll({
+        persistentState.update({
           region: state.region,
           summoner_id: res.data.message.summonerId,
           summoner_name: res.data.message.summonerName
         });
-        console.log(store.getAll());
         updateInputState(prev => ({
           ...prev,
           isChanged: false

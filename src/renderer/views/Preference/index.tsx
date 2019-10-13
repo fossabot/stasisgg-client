@@ -29,7 +29,7 @@ const ProfileContainer = styled.div`
   flex-direction: column;
 `;
 
-const FormContainer = styled.form`
+const FormContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;

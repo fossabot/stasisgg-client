@@ -173,7 +173,7 @@ const Preference = (): JSX.Element => {
     if (res) {
       if (PlayerProfileResponse.is(res.data)) {
         console.log('response', res.data);
-        persistentState.update({
+        persistentState.saveDB({
           region: state.region,
           summoner_id: res.data.message.summonerId,
           summoner_name: res.data.message.summonerName

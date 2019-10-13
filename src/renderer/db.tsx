@@ -24,6 +24,7 @@ class PersistentStore {
   dbPath: string;
 
   constructor() {
+    console.log('DB initializing has started...');
     this.dbPath = path.join(app.getPath('userData'), 'db.json');
     const adapter = new FileSync<StoreSchema>(this.dbPath);
     this.db = low(adapter);
@@ -49,8 +50,9 @@ class PersistentStore {
     this.db.set('region', data.region).write();
     this.db.set('summonerName', data.summoner_name).write();
     this.db.set('summonerId', data.summoner_id).write();
+    console.log('Saved to DB', data);
   }
 }
 
-const store = new PersistentStore();
-export default store;
+const db = new PersistentStore();
+export default db;

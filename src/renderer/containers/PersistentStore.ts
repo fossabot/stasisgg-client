@@ -1,20 +1,24 @@
 import { useState } from 'react';
 import { createContainer } from 'unstated-next';
-import store, { StoreSchema } from 'src/renderer/db';
+import db, { StoreSchema } from 'src/renderer/db';
 
 const usePersistentStore = (): {
   persistentStore: StoreSchema;
   update: (newState: StoreSchema) => void;
+  saveDB: (newState: StoreSchema) => void;
 } => {
-  const [persistentStore, setPersistentStore] = useState(store.getAll());
+  const [persistentStore, setPersistentStore] = useState(db.getAll());
 
   const update = (newState: StoreSchema): void => {
     setPersistentStore(newState);
-    store.saveAll(newState);
-    console.log('Saved store: ', newState);
   };
 
-  return { persistentStore, update };
+  const saveDB = (newState: StoreSchema): void => {
+    setPersistentStore(newState);
+    db.saveAll(newState);
+  };
+
+  return { persistentStore, update, saveDB };
 };
 
 export const PersistentStoreContainer = createContainer(usePersistentStore);

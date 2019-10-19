@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createContainer } from 'unstated-next';
 import axios from 'axios';
+import useInterval from '@use-it/interval';
 import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
 import { API, PlayerProfileResponse } from 'src/renderer/API';
 
@@ -23,22 +24,45 @@ const useProfileStore = (): {
     summonerLevel: 0
   });
 
+  const fetchProfile = useCallback(async () => {
+    const res = await axios
+      .get(API.getPlayerProfile, {
+        params: {
+          region: persistentState.persistentStore.region,
+          summonerName: persistentState.persistentStore.summoner_name
+        }
+      })
+      .catch(error => console.log(error.response));
+    console.log('fetched profile: ', res);
+    return res;
+  }, [
+    persistentState.persistentStore.region,
+    persistentState.persistentStore.summoner_name
+  ]);
+
   useEffect(() => {
-    async function fetchProfile(): Promise<void> {
-      const res = await axios
-        .get(API.getPlayerProfile, {
-          params: {
-            region: persistentState.persistentStore.region,
-            summonerName: persistentState.persistentStore.summoner_name
-          }
-        })
-        .catch(error => console.log(error.response));
+    // async function fetchProfile(): Promise<void> {
+    //   const res = await axios
+    //     .get(API.getPlayerProfile, {
+    //       params: {
+    //         region: persistentState.persistentStore.region,
+    //         summonerName: persistentState.persistentStore.summoner_name
+    //       }
+    //     })
+    //     .catch(error => console.log(error.response));
+    //   if (res && PlayerProfileResponse.is(res.data)) {
+    //     setProfile(res.data.message);
+    //   }
+    // }
+    async function updateProfile(): Promise<void> {
+      const res = await fetchProfile();
       if (res && PlayerProfileResponse.is(res.data)) {
         setProfile(res.data.message);
       }
     }
-    fetchProfile();
+    updateProfile();
   }, [
+    fetchProfile,
     persistentState.persistentStore.region,
     persistentState.persistentStore.summoner_name
   ]);

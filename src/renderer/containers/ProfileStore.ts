@@ -33,7 +33,7 @@ const useProfileStore = (): {
         }
       })
       .catch(error => console.log(error.response));
-    console.log('fetched profile: ', res);
+    // console.log('fetched profile: ', res);
     return res;
   }, [
     persistentState.persistentStore.region,
@@ -53,6 +53,16 @@ const useProfileStore = (): {
     persistentState.persistentStore.region,
     persistentState.persistentStore.summoner_name
   ]);
+
+  useInterval(() => {
+    async function updateProfile(): Promise<void> {
+      const res = await fetchProfile();
+      if (res && PlayerProfileResponse.is(res.data)) {
+        setProfile(res.data.message);
+      }
+    }
+    updateProfile();
+  }, 60000);
 
   const update = (newProfile: ProfileStore): void => setProfile(newProfile);
 

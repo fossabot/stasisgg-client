@@ -41,19 +41,6 @@ const useProfileStore = (): {
   ]);
 
   useEffect(() => {
-    // async function fetchProfile(): Promise<void> {
-    //   const res = await axios
-    //     .get(API.getPlayerProfile, {
-    //       params: {
-    //         region: persistentState.persistentStore.region,
-    //         summonerName: persistentState.persistentStore.summoner_name
-    //       }
-    //     })
-    //     .catch(error => console.log(error.response));
-    //   if (res && PlayerProfileResponse.is(res.data)) {
-    //     setProfile(res.data.message);
-    //   }
-    // }
     async function updateProfile(): Promise<void> {
       const res = await fetchProfile();
       if (res && PlayerProfileResponse.is(res.data)) {

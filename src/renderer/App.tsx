@@ -9,6 +9,7 @@ import '@openfonts/noto-sans-jp_japanese';
 import { createGlobalStyle } from 'styled-components';
 import { StylesProvider } from '@material-ui/styles';
 import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
+import { ProfileStoreContainer } from 'src/renderer/containers/ProfileStore';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -24,9 +25,16 @@ const App = (): JSX.Element => (
     <GlobalStyles />
     <MemoryRouter>
       <PersistentStoreContainer.Provider>
-        <MySidebar docked={true} open={true} shadow={false} transitions={false}>
-          <MainContents />
-        </MySidebar>
+        <ProfileStoreContainer.Provider>
+          <MySidebar
+            docked={true}
+            open={true}
+            shadow={false}
+            transitions={false}
+          >
+            <MainContents />
+          </MySidebar>
+        </ProfileStoreContainer.Provider>
       </PersistentStoreContainer.Provider>
     </MemoryRouter>
   </StylesProvider>

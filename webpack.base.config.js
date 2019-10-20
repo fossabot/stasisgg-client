@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
@@ -26,22 +27,6 @@ module.exports = {
           })
         },
         exclude: /node_modules/
-      },
-      {
-        test: /\.css?$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.svg?$/,
-        use: [{ loader: 'react-svg-loader' }]
-      },
-      {
-        test: /\.(jpg|png)$/,
-        use: ['file-loader']
-      },
-      {
-        test: /\.(woff|woff2|ttf|eot|ico)$/,
-        loader: 'file-loader?name=assets/[name].[hash].[ext]'
       }
     ]
   }

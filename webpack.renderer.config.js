@@ -27,7 +27,7 @@ module.exports = merge(base, {
         test: /\.(woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader',
         options: {
-          name: 'assets/[name].[hash].[ext]',
+          name: 'assets/[name].[ext]',
           publicPath: '..',
           context: 'src'
         }

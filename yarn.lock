@@ -800,10 +800,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
-"@openfonts/noto-sans-jp_japanese@^0.1.0":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@openfonts/noto-sans-jp_japanese/-/noto-sans-jp_japanese-0.1.1.tgz#567b42d5f254bb8adc174adfb70cc82b175bbd33"
-  integrity sha512-Pp5CIrPTzcYZwlfj5eCbR3XoCRWkUJle97mbXrNhXZdN6iHr+CG1E4iESugoo9WpbV2ToD7TS3fv0yWa/TrPFw==
+"@openfonts/noto-sans-jp_japanese@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@openfonts/noto-sans-jp_japanese/-/noto-sans-jp_japanese-1.0.0.tgz#2b4e602bc50d0379506d08ba7e06a06d77f1c659"
+  integrity sha512-gIMUJzK2mwu/qCCoCXruL45GEWzXdvXfOKXzwbVTbpfXWhNcFkJGzBsp/lSLNlTx5IEOvnMPu+ezqKJZ2LZOUQ==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -6750,6 +6750,11 @@ postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.5, postcss@^7.0.
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+preload-webpack-plugin@^3.0.0-beta.4:
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/preload-webpack-plugin/-/preload-webpack-plugin-3.0.0-beta.4.tgz#b8a36046df3b4a1b61db55d92f1a5aebdb99d246"
+  integrity sha512-6hhh0AswCbp/U4EPVN4fbK2wiDkXhmgjjgEYEmXa21UYwjYzCIgh3ZRMXM21ZPLfbQGpdFuSL3zFslU+edjpwg==
 
 prelude-ls@~1.1.2:
   version "1.1.2"

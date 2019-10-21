@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import PlayerProfile from 'src/renderer/components/PlayerProfile';
-import HomeIcon from 'src/icons/home-26px.svg';
-import LibraryIcon from 'src/icons/video_library-26px.svg';
-import SettingsIcon from 'src/icons/settings-26px.svg';
-import AccountIcon from 'src/icons/account_circle-26px.svg';
-import AboutIcon from 'src/icons/about-26px.svg';
+import HomeIcon from 'src/assets/icons/home-26px.svg';
+import LibraryIcon from 'src/assets/icons/video_library-26px.svg';
+import SettingsIcon from 'src/assets/icons/settings-26px.svg';
+import AccountIcon from 'src/assets/icons/account_circle-26px.svg';
+import AboutIcon from 'src/assets/icons/about-26px.svg';
 import BottomGrayBorder from 'src/renderer/components/BottomGrayBorder';
 import { ProfileStoreContainer } from 'src/renderer/containers/ProfileStore';
 

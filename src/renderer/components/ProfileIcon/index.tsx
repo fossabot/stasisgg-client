@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import defaultImage from 'src/icons/-1.png';
+import defaultImage from 'src/assets/icons/-1.png';
 
 const Icon = styled.img<{ height: string | undefined }>`
   height: ${({ height }): string => height || '100px'};

@@ -3,11 +3,11 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import MySidebar from 'src/renderer/components/FixedSidebar';
 import MainContents from 'src/renderer/components/Router';
-import 'src/renderer/fonts.css';
 import { createGlobalStyle } from 'styled-components';
 import { StylesProvider } from '@material-ui/styles';
 import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
 import { ProfileStoreContainer } from 'src/renderer/containers/ProfileStore';
+import Fonts from 'src/renderer/components/Fonts';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
 const App = (): JSX.Element => (
   <StylesProvider injectFirst>
+    <Fonts />
     <GlobalStyles />
     <MemoryRouter>
       <PersistentStoreContainer.Provider>

@@ -2,6 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const merge = require('webpack-merge');
 const base = require('./webpack.base.config');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 module.exports = merge(base, {
   module: {
@@ -27,11 +28,12 @@ module.exports = merge(base, {
         test: /\.(woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader',
         options: {
-          name: 'assets/[name].[ext]',
+          name: 'assets/fonts/[name].[ext]',
           publicPath: '..',
           context: 'src'
         }
       }
     ]
-  }
+  },
+  plugins: [new PreloadWebpackPlugin()]
 });

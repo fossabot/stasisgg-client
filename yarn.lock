@@ -800,11 +800,6 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
-"@openfonts/noto-sans-jp_japanese@^0.1.0":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@openfonts/noto-sans-jp_japanese/-/noto-sans-jp_japanese-0.1.1.tgz#567b42d5f254bb8adc174adfb70cc82b175bbd33"
-  integrity sha512-Pp5CIrPTzcYZwlfj5eCbR3XoCRWkUJle97mbXrNhXZdN6iHr+CG1E4iESugoo9WpbV2ToD7TS3fv0yWa/TrPFw==
-
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
@@ -8461,16 +8456,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typeface-raleway@^0.0.75:
-  version "0.0.75"
-  resolved "https://registry.yarnpkg.com/typeface-raleway/-/typeface-raleway-0.0.75.tgz#cc79688aa3175452744ecd19540b54dad153e8f3"
-  integrity sha512-mUvT/klCTGA2HporaIMNY3ap45YxBErxFv/1pv82LhbFdNc3m+6ddfoexP6xxwMZ5yZ2VmDhMqk1yikDEoxU/Q==
-
-typeface-roboto@^0.0.75:
-  version "0.0.75"
-  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.75.tgz#98d5ba35ec234bbc7172374c8297277099cc712b"
-  integrity sha512-VrR/IiH00Z1tFP4vDGfwZ1esNqTiDMchBEXYY9kilT6wRGgFoCAlgkEUMHb1E3mB0FsfZhv756IF0+R+SFPfdg==
 
 typescript-plugin-styled-components@^1.4.3:
   version "1.4.3"

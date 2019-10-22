@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Container } from '@material-ui/core';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import Header from 'src/renderer/components/Header';
+import RoleSelecter from 'src/renderer/components/RoleSelecter';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -15,7 +16,7 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1em;
-  * + * {
+  > * + * {
     margin-left: 16px;
   }
 `;
@@ -32,6 +33,7 @@ const Home = (): JSX.Element => (
       <Container fixed style={{ height: '100%' }}>
         <HeaderContainer>
           <Header>RECENT MATCH</Header>
+          <RoleSelecter />
         </HeaderContainer>
         <GamesContainer>Contents here</GamesContainer>
       </Container>

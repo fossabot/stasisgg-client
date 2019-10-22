@@ -24,7 +24,7 @@ const MarginContainer = styled.div`
 `;
 
 const ProfileContainer = styled.div`
-  padding: 1em;
+  padding: 0em 1em 1em 1em;
   display: flex;
   flex-direction: column;
 `;
@@ -36,6 +36,7 @@ const PageContainer = styled(Container)`
 `;
 
 const HeaderContainer = styled.div`
+  height: 42px;
   display: flex;
   align-items: center;
   margin-bottom: 1em;

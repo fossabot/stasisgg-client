@@ -40,9 +40,6 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1em;
-  * + * {
-    margin-left: 1em;
-  }
 `;
 
 const FormRowContainer = styled.div`

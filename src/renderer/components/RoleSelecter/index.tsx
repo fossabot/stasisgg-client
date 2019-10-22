@@ -23,6 +23,10 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: #232629;
+  }
 `;
 
 const RoleSelecter = (): JSX.Element => {

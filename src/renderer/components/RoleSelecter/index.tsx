@@ -25,7 +25,7 @@ const IconContainer = styled.div`
   align-items: center;
   cursor: pointer;
   &:hover {
-    background-color: #232629;
+    background-color: rgba(35, 38, 41, 0.6);
   }
   &.selected {
     background-color: #232629;

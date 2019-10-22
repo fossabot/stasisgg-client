@@ -20,6 +20,12 @@ const HeaderContainer = styled.div`
   }
 `;
 
+const GamesContainer = styled.div`
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+`;
+
 const Home = (): JSX.Element => (
   <MainPageTheme>
     <MarginContainer>
@@ -27,6 +33,7 @@ const Home = (): JSX.Element => (
         <HeaderContainer>
           <Header>RECENT MATCH</Header>
         </HeaderContainer>
+        <GamesContainer>Contents here</GamesContainer>
       </Container>
     </MarginContainer>
   </MainPageTheme>

@@ -29,7 +29,7 @@ const ProfileContainer = styled.div`
   flex-direction: column;
 `;
 
-const FormContainer = styled.div`
+const PageContainer = styled(Container)`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -196,47 +196,45 @@ const Preference = (): JSX.Element => {
   return (
     <MainPageTheme>
       <MarginContainer>
-        <Container fixed style={{ height: '100%' }}>
-          <FormContainer>
+        <PageContainer>
+          <HeaderContainer>
+            <Header>PREFERENCE</Header>
+            {state.isChanged && (
+              <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
+            )}
+          </HeaderContainer>
+          <ProfileContainer>
             <HeaderContainer>
-              <Header>PREFERENCE</Header>
-              {state.isChanged && (
-                <WarningSharpIcon htmlColor="rgba(199, 171, 110, 0.8)" />
-              )}
+              <Header sub>Profile</Header>
             </HeaderContainer>
-            <ProfileContainer>
-              <HeaderContainer>
-                <Header sub>Profile</Header>
-              </HeaderContainer>
-              <FormRowContainer>
-                <InputField
-                  name="summoner_name"
-                  label="Summoner Name"
-                  value={state.summoner_name}
-                  onChange={onChangeInputText}
-                />
-                <StyledFormControl variant="outlined">
-                  <StyledSelect
-                    value={state.region}
-                    onChange={handleSelectChange}
-                  >
-                    {regionItems}
-                  </StyledSelect>
-                </StyledFormControl>
-              </FormRowContainer>
-            </ProfileContainer>
-            <MyButtonContainer>
-              <MyButton OnClick={handleButtonOnClick}>
-                {isLoading ? null : 'APPLY'}
-                <ScaleLoader
-                  height={16}
-                  color={'rgba(233, 231, 235, 1.0)'}
-                  loading={isLoading}
-                />
-              </MyButton>
-            </MyButtonContainer>
-          </FormContainer>
-        </Container>
+            <FormRowContainer>
+              <InputField
+                name="summoner_name"
+                label="Summoner Name"
+                value={state.summoner_name}
+                onChange={onChangeInputText}
+              />
+              <StyledFormControl variant="outlined">
+                <StyledSelect
+                  value={state.region}
+                  onChange={handleSelectChange}
+                >
+                  {regionItems}
+                </StyledSelect>
+              </StyledFormControl>
+            </FormRowContainer>
+          </ProfileContainer>
+          <MyButtonContainer>
+            <MyButton OnClick={handleButtonOnClick}>
+              {isLoading ? null : 'APPLY'}
+              <ScaleLoader
+                height={16}
+                color={'rgba(233, 231, 235, 1.0)'}
+                loading={isLoading}
+              />
+            </MyButton>
+          </MyButtonContainer>
+        </PageContainer>
       </MarginContainer>
     </MainPageTheme>
   );

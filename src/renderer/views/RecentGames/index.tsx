@@ -12,6 +12,12 @@ const MarginContainer = styled.div`
   flex-direction: column;
 `;
 
+const PageContainer = styled(Container)`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
 const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
@@ -30,13 +36,13 @@ const GamesContainer = styled.div`
 const Home = (): JSX.Element => (
   <MainPageTheme>
     <MarginContainer>
-      <Container fixed style={{ height: '100%' }}>
+      <PageContainer>
         <HeaderContainer>
           <Header>RECENT MATCH</Header>
           <RoleSelecter />
         </HeaderContainer>
         <GamesContainer>Contents here</GamesContainer>
-      </Container>
+      </PageContainer>
     </MarginContainer>
   </MainPageTheme>
 );

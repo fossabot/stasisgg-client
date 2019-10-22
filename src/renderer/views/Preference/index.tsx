@@ -41,7 +41,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   margin-bottom: 1em;
   * + * {
-    margin-left: 16px;
+    margin-left: 1em;
   }
 `;
 

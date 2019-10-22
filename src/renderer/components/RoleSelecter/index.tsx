@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import AllIcon from 'src/assets/icons/role/all.svg';
 import TopIcon from 'src/assets/icons/role/position-top.svg';
@@ -27,27 +27,60 @@ const IconContainer = styled.div`
   &:hover {
     background-color: #232629;
   }
+  &.selected {
+    background-color: #232629;
+  }
 `;
 
+type Role = 'All' | 'Top' | 'Jungle' | 'Mid' | 'Bot' | 'Support';
+
 const RoleSelecter = (): JSX.Element => {
+  const [value, setState] = useState<Role>('All');
+  const onClick = (role: Role): void => {
+    setState(role);
+    console.log(role);
+  };
+
+  const isSelected = (role: Role): boolean => {
+    return value === role;
+  };
+
   return (
     <RolesContainer>
-      <IconContainer>
-        <AllIcon />
+      <IconContainer
+        onClick={(): void => onClick('All')}
+        className={isSelected('All') ? 'selected' : ''}
+      >
+        <AllIcon height={25} width={25} />
       </IconContainer>
-      <IconContainer>
+      <IconContainer
+        onClick={(): void => onClick('Top')}
+        className={isSelected('Top') ? 'selected' : ''}
+      >
         <TopIcon height={25} width={25} />
       </IconContainer>
-      <IconContainer>
+      <IconContainer
+        onClick={(): void => onClick('Jungle')}
+        className={isSelected('Jungle') ? 'selected' : ''}
+      >
         <JungleIcon height={25} width={25} />
       </IconContainer>
-      <IconContainer>
+      <IconContainer
+        onClick={(): void => onClick('Mid')}
+        className={isSelected('Mid') ? 'selected' : ''}
+      >
         <MidIcon height={25} width={25} />
       </IconContainer>
-      <IconContainer>
+      <IconContainer
+        onClick={(): void => onClick('Bot')}
+        className={isSelected('Bot') ? 'selected' : ''}
+      >
         <BotIcon height={25} width={25} />
       </IconContainer>
-      <IconContainer>
+      <IconContainer
+        onClick={(): void => onClick('Support')}
+        className={isSelected('Support') ? 'selected' : ''}
+      >
         <SupportIcon height={25} width={25} />
       </IconContainer>
     </RolesContainer>

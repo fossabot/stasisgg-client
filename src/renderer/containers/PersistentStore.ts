@@ -3,22 +3,22 @@ import { createContainer } from 'unstated-next';
 import db, { StoreSchema } from 'src/renderer/db';
 
 const usePersistentStore = (): {
-  persistentStore: StoreSchema;
+  store: StoreSchema;
   update: (newState: StoreSchema) => void;
   saveDB: (newState: StoreSchema) => void;
 } => {
-  const [persistentStore, setPersistentStore] = useState(db.getAll());
+  const [store, setStore] = useState(db.getAll());
 
   const update = (newState: StoreSchema): void => {
-    setPersistentStore(newState);
+    setStore(newState);
   };
 
   const saveDB = (newState: StoreSchema): void => {
-    setPersistentStore(newState);
+    setStore(newState);
     db.saveAll(newState);
   };
 
-  return { persistentStore, update, saveDB };
+  return { store: store, update, saveDB };
 };
 
 export const PersistentStoreContainer = createContainer(usePersistentStore);

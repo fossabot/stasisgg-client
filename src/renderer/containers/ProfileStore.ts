@@ -28,17 +28,14 @@ const useProfileStore = (): {
     const res = await axios
       .get(API.getPlayerProfile, {
         params: {
-          region: persistentState.persistentStore.region,
-          summonerName: persistentState.persistentStore.summoner_name
+          region: persistentState.store.region,
+          summonerName: persistentState.store.summoner_name
         }
       })
       .catch(error => console.log(error.response));
     // console.log('fetched profile: ', res);
     return res;
-  }, [
-    persistentState.persistentStore.region,
-    persistentState.persistentStore.summoner_name
-  ]);
+  }, [persistentState.store.region, persistentState.store.summoner_name]);
 
   useEffect(() => {
     async function updateProfile(): Promise<void> {
@@ -50,8 +47,8 @@ const useProfileStore = (): {
     updateProfile();
   }, [
     fetchProfile,
-    persistentState.persistentStore.region,
-    persistentState.persistentStore.summoner_name
+    persistentState.store.region,
+    persistentState.store.summoner_name
   ]);
 
   useInterval(() => {

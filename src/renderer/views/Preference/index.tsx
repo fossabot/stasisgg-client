@@ -123,12 +123,12 @@ const Preference = (): JSX.Element => {
 
   const [state, updateInputState] = useState<State>({
     isChanged: false,
-    ...persistentState.persistentStore
+    ...persistentState.store
   });
   const onChangeInputText = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       let isInputChanged = false;
-      if (event.target.value !== persistentState[event.target.name]) {
+      if (event.target.value !== persistentState.store[event.target.name]) {
         isInputChanged = true;
       } else {
         isInputChanged = false;
@@ -140,7 +140,7 @@ const Preference = (): JSX.Element => {
         isChanged: isInputChanged
       }));
     },
-    [persistentState]
+    [persistentState.store]
   );
 
   const handleSelectChange = (

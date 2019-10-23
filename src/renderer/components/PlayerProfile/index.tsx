@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProfileIcon from 'src/renderer/components/ProfileIcon';
+import RoundedIcon from 'src/renderer/components/RoundedIcon';
 import SummonerNameLabel from 'src/renderer/components/SummonerNameLabel';
 import SummonerLevelPlate from 'src/renderer/components/SummonerLevelPlate';
 
@@ -37,7 +37,7 @@ type ProfileProps = {
 const PlayerProfile: React.FC<ProfileProps> = (props: ProfileProps) => (
   <ProfileContainer>
     <IconContainer>
-      <ProfileIcon profileIconURL={props.profileIconURL} height={'52px'} />
+      <RoundedIcon iconURL={props.profileIconURL} height={'52px'} isBordered />
     </IconContainer>
     <NameAndLevelContainer>
       <SummonerNameLabel summonerName={props.summonerName} />

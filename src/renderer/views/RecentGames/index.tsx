@@ -4,6 +4,8 @@ import { Container } from '@material-ui/core';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import Header from 'src/renderer/components/Header';
 import RoleSelecter from 'src/renderer/components/RoleSelecter';
+import GameCard from 'src/renderer/components/GameCard';
+import { fakerMatch } from 'src/renderer/views/RecentGames/fakerMatchMock';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -28,23 +30,26 @@ const HeaderContainer = styled.div`
 `;
 
 const GamesContainer = styled.div`
-  padding: 1em;
   display: flex;
   flex-direction: column;
 `;
 
-const Home = (): JSX.Element => (
-  <MainPageTheme>
-    <MarginContainer>
-      <PageContainer>
-        <HeaderContainer>
-          <Header>RECENT MATCH</Header>
-          <RoleSelecter />
-        </HeaderContainer>
-        <GamesContainer>Contents here</GamesContainer>
-      </PageContainer>
-    </MarginContainer>
-  </MainPageTheme>
-);
+const Home = (): JSX.Element => {
+  return (
+    <MainPageTheme>
+      <MarginContainer>
+        <PageContainer>
+          <HeaderContainer>
+            <Header>RECENT MATCH</Header>
+            <RoleSelecter />
+          </HeaderContainer>
+          <GamesContainer>
+            <GameCard game={fakerMatch} />
+          </GamesContainer>
+        </PageContainer>
+      </MarginContainer>
+    </MainPageTheme>
+  );
+};
 
 export default Home;

@@ -7,9 +7,11 @@ interface MainContainerProps {
 }
 
 const MainContainer = styled.div<MainContainerProps>`
+  padding: 1em;
   display: flex;
   background-color: ${(props: MainContainerProps): string =>
     props.win ? 'rgba(37, 57, 122, 0.5)' : 'rgba(176, 37, 47, 0.5)'};
+  border: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
 const GameInformation = styled.div`
@@ -17,7 +19,7 @@ const GameInformation = styled.div`
   flex-direction: column;
   align-items: center;
   > * + * {
-    margin-top: 4px;
+    margin-top: 3px;
   }
 `;
 
@@ -45,7 +47,10 @@ const convertUnixToString = (unix: number): string => {
   if (+month < 10) {
     month = '0' + month;
   }
-  const date = d.getDate();
+  let date = d.getDate().toString();
+  if (+date < 10) {
+    date = '0' + date;
+  }
 
   return `${date}/${month}/${year}`;
 };
@@ -69,16 +74,21 @@ const GameCard: React.FC<OneMatchCardProps> = (
         <Label>
           {convertDurationToString(props.game.match.gameDurationSecond)}
         </Label>
-        <hr
-          style={{
-            height: '2px',
-            width: '36px',
-            marginBottom: 0,
-            border: 'none',
-            backgroundColor: 'rgba(197, 197, 197, 0.3)'
-          }}
-        />
-        <Label color={'rgba(197, 197, 197, 0.7)'} fontSize={'13px'}>
+        <div style={{ display: 'flex', alignItems: 'center', marginTop: 0 }}>
+          <hr
+            style={{
+              height: '2px',
+              width: '36px',
+              border: 'none',
+              backgroundColor: 'rgba(197, 197, 197, 0.3)'
+            }}
+          />
+        </div>
+        <Label
+          color={'rgba(197, 197, 197, 0.7)'}
+          fontSize={'13px'}
+          style={{ marginTop: 0 }}
+        >
           {convertUnixToString(props.game.match.gameCreationUnix)}
         </Label>
         <Label color={'rgba(197, 197, 197, 0.7)'} fontSize={'13px'}>

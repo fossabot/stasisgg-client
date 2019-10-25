@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { OneMatchCardType } from 'src/renderer/API';
 import RoundedIcon from 'src/renderer/components/RoundedIcon';
 import RoleIcon from 'src/renderer/components/RoleIcon';
+import SpellIcon from 'src/renderer/components/SpellIcon';
 
 interface MainContainerProps {
   win?: boolean;
@@ -32,7 +33,17 @@ const ChampionIconAndRole = styled.div`
   align-items: center;
   justify-content: center;
   > * + * {
-    margin-top: 8px;
+    margin-top: 0.5em;
+  }
+`;
+
+const SpellIcons = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  > * + * {
+    margin-top: 0.5em;
   }
 `;
 
@@ -116,6 +127,10 @@ const GameCard: React.FC<OneMatchCardProps> = (
           width={35}
         />
       </ChampionIconAndRole>
+      <SpellIcons>
+        <SpellIcon spellId={props.game.player.summonerSpell1Id} height={24} />
+        <SpellIcon spellId={props.game.player.summonerSpell2Id} height={24} />
+      </SpellIcons>
     </MainContainer>
   );
 };

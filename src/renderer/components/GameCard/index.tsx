@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { OneMatchCardType } from 'src/renderer/API';
 import RoundedIcon from 'src/renderer/components/RoundedIcon';
+import RoleIcon from 'src/renderer/components/RoleIcon';
 
 interface MainContainerProps {
   win?: boolean;
@@ -25,9 +26,11 @@ const GameInformation = styled.div`
 `;
 
 const ChampionIconAndRole = styled.div`
+  margin: 0 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   > * + * {
     margin-top: 8px;
   }
@@ -109,6 +112,11 @@ const GameCard: React.FC<OneMatchCardProps> = (
         <RoundedIcon
           iconURL={props.game.player.championIconURL}
           height={'42px'}
+        />
+        <RoleIcon
+          role={props.game.player.lanePosition}
+          height={35}
+          width={35}
         />
       </ChampionIconAndRole>
     </MainContainer>

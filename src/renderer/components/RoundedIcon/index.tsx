@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import defaultImage from 'src/assets/icons/-1.png';
 
 const Icon = styled.img<{
-  height: string | undefined;
+  height?: number;
   isBordered: boolean | undefined;
 }>`
-  height: ${({ height }): string => height || '100px'};
+  height: ${({ height }): number => height || 100};
   border-radius: 50%;
   border: ${({ isBordered }): string =>
     isBordered ? '1px solid #2c4873' : ''};
@@ -14,7 +14,7 @@ const Icon = styled.img<{
 
 type ProfileProps = {
   iconURL: string;
-  height?: string;
+  height?: number;
   isBordered?: boolean;
 };
 

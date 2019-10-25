@@ -37,7 +37,7 @@ type ProfileProps = {
 const PlayerProfile: React.FC<ProfileProps> = (props: ProfileProps) => (
   <ProfileContainer>
     <IconContainer>
-      <RoundedIcon iconURL={props.profileIconURL} height={'52px'} isBordered />
+      <RoundedIcon iconURL={props.profileIconURL} height={52} isBordered />
     </IconContainer>
     <NameAndLevelContainer>
       <SummonerNameLabel summonerName={props.summonerName} />

@@ -109,10 +109,7 @@ const GameCard: React.FC<OneMatchCardProps> = (
         </Label>
       </GameInformation>
       <ChampionIconAndRole>
-        <RoundedIcon
-          iconURL={props.game.player.championIconURL}
-          height={'42px'}
-        />
+        <RoundedIcon iconURL={props.game.player.championIconURL} height={42} />
         <RoleIcon
           role={props.game.player.lanePosition}
           height={35}

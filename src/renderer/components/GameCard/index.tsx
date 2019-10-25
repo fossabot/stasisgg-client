@@ -14,7 +14,7 @@ const MainContainer = styled.div<MainContainerProps>`
   display: flex;
   background-color: ${(props: MainContainerProps): string =>
     props.win ? 'rgba(37, 57, 122, 0.5)' : 'rgba(176, 37, 47, 0.5)'};
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(60, 60, 60, 1);
 `;
 
 const GameInformation = styled.div`

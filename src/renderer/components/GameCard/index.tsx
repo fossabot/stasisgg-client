@@ -4,6 +4,7 @@ import { OneMatchCardType } from 'src/renderer/API';
 import RoundedIcon from 'src/renderer/components/RoundedIcon';
 import RoleIcon from 'src/renderer/components/RoleIcon';
 import SpellIcon from 'src/renderer/components/SpellIcon';
+import RuneIcon from 'src/renderer/components/RuneIcon';
 
 interface MainContainerProps {
   win?: boolean;
@@ -117,9 +118,13 @@ const GameCard: React.FC<OneMatchCardProps> = (
           width={35}
         />
       </VerticalIcons>
-      <VerticalIcons>
+      <VerticalIcons margin={'0 0.5em 0 0'}>
         <SpellIcon spellId={props.game.player.summonerSpell1Id} height={24} />
         <SpellIcon spellId={props.game.player.summonerSpell2Id} height={24} />
+      </VerticalIcons>
+      <VerticalIcons>
+        <RuneIcon runeId={props.game.player.runeMain} height={24} />
+        <RuneIcon runeId={props.game.player.runeSub} height={24} />
       </VerticalIcons>
     </MainContainer>
   );

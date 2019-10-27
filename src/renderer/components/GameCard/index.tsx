@@ -26,18 +26,8 @@ const GameInformation = styled.div`
   }
 `;
 
-const ChampionIconAndRole = styled.div`
-  margin: 0 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  > * + * {
-    margin-top: 0.5em;
-  }
-`;
-
-const SpellIcons = styled.div`
+const VerticalIcons = styled.div<{ margin?: string }>`
+  margin: ${({ margin }): string => margin || '0'};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,18 +109,18 @@ const GameCard: React.FC<OneMatchCardProps> = (
           Patch {truncateNStringTo2Point(props.game.match.gameVersion)}
         </Label>
       </GameInformation>
-      <ChampionIconAndRole>
+      <VerticalIcons margin={'0 1em'}>
         <RoundedIcon iconURL={props.game.player.championIconURL} height={42} />
         <RoleIcon
           role={props.game.player.lanePosition}
           height={35}
           width={35}
         />
-      </ChampionIconAndRole>
-      <SpellIcons>
+      </VerticalIcons>
+      <VerticalIcons>
         <SpellIcon spellId={props.game.player.summonerSpell1Id} height={24} />
         <SpellIcon spellId={props.game.player.summonerSpell2Id} height={24} />
-      </SpellIcons>
+      </VerticalIcons>
     </MainContainer>
   );
 };

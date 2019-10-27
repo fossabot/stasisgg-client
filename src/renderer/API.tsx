@@ -53,6 +53,7 @@ const OneMatchCard = t.type({
     kill: t.number,
     death: t.number,
     assist: t.number,
+    kda: t.number,
     level: t.number, // champLevel
     cs: t.number, // totalMinionsKilled
     csPerMinuites: t.number,

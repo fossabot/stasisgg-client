@@ -5,6 +5,7 @@ import RoundedIcon from 'src/renderer/components/RoundedIcon';
 import RoleIcon from 'src/renderer/components/RoleIcon';
 import SpellIcon from 'src/renderer/components/SpellIcon';
 import RuneIcon from 'src/renderer/components/RuneIcon';
+import KDA from 'src/renderer/components/KDA';
 
 interface MainContainerProps {
   win?: boolean;
@@ -126,6 +127,12 @@ const GameCard: React.FC<OneMatchCardProps> = (
         <RuneIcon runeId={props.game.player.runeMain} height={24} />
         <RuneIcon runeId={props.game.player.runeSub} height={24} />
       </VerticalIcons>
+      <KDA
+        kill={props.game.player.kill}
+        death={props.game.player.death}
+        assist={props.game.player.assist}
+        kda={props.game.player.kda}
+      />
     </MainContainer>
   );
 };

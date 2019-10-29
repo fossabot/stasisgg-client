@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const MainConatiner = styled.div`
-  margin: 0 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;

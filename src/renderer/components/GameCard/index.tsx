@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { OneMatchCardType } from 'src/renderer/API';
 import RoundedIcon from 'src/renderer/components/RoundedIcon';
 import RoleIcon from 'src/renderer/components/RoleIcon';
-import SpellIcon from 'src/renderer/components/SpellIcon';
-import RuneIcon from 'src/renderer/components/RuneIcon';
+import SpellAndRunePanel from 'src/renderer/components/SpellAndRunePanel';
 import KDA from 'src/renderer/components/KDA';
 import PlayerStatsPanel from 'src/renderer/components/PlayerStatsPanel';
 
@@ -18,6 +17,9 @@ const MainContainer = styled.div<MainContainerProps>`
   background-color: ${(props: MainContainerProps): string =>
     props.win ? 'rgba(37, 57, 122, 0.5)' : 'rgba(176, 37, 47, 0.5)'};
   border: 1px solid rgba(60, 60, 60, 1);
+  > * + * {
+    margin-left: 1em;
+  }
 `;
 
 const GameInformation = styled.div`
@@ -30,7 +32,6 @@ const GameInformation = styled.div`
 `;
 
 const VerticalIcons = styled.div<{ margin?: string }>`
-  margin: ${({ margin }): string => margin || '0'};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,7 +113,7 @@ const GameCard: React.FC<OneMatchCardProps> = (
           Patch {truncateNStringTo2Point(props.game.match.gameVersion)}
         </Label>
       </GameInformation>
-      <VerticalIcons margin={'0 1em'}>
+      <VerticalIcons>
         <RoundedIcon iconURL={props.game.player.championIconURL} height={42} />
         <RoleIcon
           role={props.game.player.lanePosition}
@@ -120,14 +121,12 @@ const GameCard: React.FC<OneMatchCardProps> = (
           width={35}
         />
       </VerticalIcons>
-      <VerticalIcons margin={'0 0.5em 0 0'}>
-        <SpellIcon spellId={props.game.player.summonerSpell1Id} height={24} />
-        <SpellIcon spellId={props.game.player.summonerSpell2Id} height={24} />
-      </VerticalIcons>
-      <VerticalIcons>
-        <RuneIcon runeId={props.game.player.runeMain} height={24} />
-        <RuneIcon runeId={props.game.player.runeSub} height={24} />
-      </VerticalIcons>
+      <SpellAndRunePanel
+        summonerSpell1Id={props.game.player.summonerSpell1Id}
+        summonerSpell2Id={props.game.player.summonerSpell2Id}
+        runeMain={props.game.player.runeMain}
+        runeSub={props.game.player.runeSub}
+      />
       <KDA
         kill={props.game.player.kill}
         death={props.game.player.death}

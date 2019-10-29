@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const MainContainer = styled.div`
   display: flex;
+  padding: 0 1em;
 `;
 const GridContainer = styled.div`
   display: grid;

@@ -6,6 +6,7 @@ import Header from 'src/renderer/components/Header';
 import RoleSelecter from 'src/renderer/components/RoleSelecter';
 import GameCard from 'src/renderer/components/GameCard';
 import {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   fakerMatch,
   faker3901480925
 } from 'src/renderer/views/RecentGames/fakerMatchMock';

@@ -6,6 +6,7 @@ import RoleIcon from 'src/renderer/components/RoleIcon';
 import SpellAndRunePanel from 'src/renderer/components/SpellAndRunePanel';
 import KDA from 'src/renderer/components/KDA';
 import PlayerStatsPanel from 'src/renderer/components/PlayerStatsPanel';
+import ItemsPanel from 'src/renderer/components/ItemsPanel';
 
 interface MainContainerProps {
   win?: boolean;
@@ -139,6 +140,7 @@ const GameCard: React.FC<OneMatchCardProps> = (
         csPerMinutes={props.game.player.csPerMinuites}
         kp={props.game.player.kp}
       />
+      <ItemsPanel items={props.game.player.items} />
     </MainContainer>
   );
 };

@@ -5,7 +5,10 @@ import { MainPageTheme } from 'src/renderer/components/theme';
 import Header from 'src/renderer/components/Header';
 import RoleSelecter from 'src/renderer/components/RoleSelecter';
 import GameCard from 'src/renderer/components/GameCard';
-import { fakerMatch } from 'src/renderer/views/RecentGames/fakerMatchMock';
+import {
+  fakerMatch,
+  faker3901480925
+} from 'src/renderer/views/RecentGames/fakerMatchMock';
 
 const MarginContainer = styled.div`
   height: calc(100vh - 4em);
@@ -44,7 +47,7 @@ const Home = (): JSX.Element => {
             <RoleSelecter />
           </HeaderContainer>
           <GamesContainer>
-            <GameCard game={fakerMatch} />
+            <GameCard game={faker3901480925} />
           </GamesContainer>
         </PageContainer>
       </MarginContainer>

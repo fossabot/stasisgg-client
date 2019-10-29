@@ -48,7 +48,7 @@ type ParticipantsPanelProps = {
   }[];
 };
 
-const calcurateLaneOrder = (lanePosition: string): number => {
+const getLaneOrder = (lanePosition: string): number => {
   let order = 0;
   switch (lanePosition) {
     case 'TOP':
@@ -85,10 +85,7 @@ const createTeamComponentsList = (
   }
 
   const teamComponents = team
-    .sort(
-      (a, b) =>
-        calcurateLaneOrder(a.lanePosition) - calcurateLaneOrder(b.lanePosition)
-    )
+    .sort((a, b) => getLaneOrder(a.lanePosition) - getLaneOrder(b.lanePosition))
     .map(p => {
       const pList: JSX.Element[] = [];
       pList.push(

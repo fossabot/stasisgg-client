@@ -64,6 +64,7 @@ const OneMatchCard = t.type({
       participantId: t.number,
       championIconURL: t.string,
       summonerName: t.string,
+      lanePosition: t.string,
       isYou: t.boolean
     })
   )

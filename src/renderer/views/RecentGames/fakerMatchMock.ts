@@ -66,6 +66,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/104/square',
       summonerName: 'SANDBOX Natalie',
+      lanePosition: 'JUNGLE',
       isYou: false
     },
     {
@@ -73,6 +74,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/8/square',
       summonerName: '페이커 fan',
+      lanePosition: 'MIDDLE',
       isYou: false
     },
     {
@@ -80,6 +82,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/555/square',
       summonerName: 'KZ Pleata R ',
+      lanePosition: 'SUPPORT',
       isYou: false
     },
     {
@@ -87,6 +90,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/22/square',
       summonerName: 'Bullet Time',
+      lanePosition: 'BOTTOM',
       isYou: false
     },
     {
@@ -94,6 +98,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/266/square',
       summonerName: 'SKT T1 Canna',
+      lanePosition: 'MIDDLE',
       isYou: false
     },
     {
@@ -101,6 +106,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/126/square',
       summonerName: '사랑해 허수',
+      lanePosition: 'TOP',
       isYou: false
     },
     {
@@ -108,6 +114,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/236/square',
       summonerName: 'starrain night',
+      lanePosition: 'BOTTOM',
       isYou: false
     },
     {
@@ -115,6 +122,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/84/square',
       summonerName: 'Hide on bush',
+      lanePosition: 'MIDDLE',
       isYou: true
     },
     {
@@ -122,6 +130,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/412/square',
       summonerName: 'Secret',
+      lanePosition: 'SUPPORT',
       isYou: false
     },
     {
@@ -129,6 +138,7 @@ export const fakerMatch = {
       championIconURL:
         'https://cdn.communitydragon.org/9.21.1/champion/517/square',
       summonerName: 'flawless1234',
+      lanePosition: 'JUNGLE',
       isYou: false
     }
   ]

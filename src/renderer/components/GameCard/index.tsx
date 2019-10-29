@@ -6,6 +6,7 @@ import RoleIcon from 'src/renderer/components/RoleIcon';
 import SpellIcon from 'src/renderer/components/SpellIcon';
 import RuneIcon from 'src/renderer/components/RuneIcon';
 import KDA from 'src/renderer/components/KDA';
+import PlayerStatsPanel from 'src/renderer/components/PlayerStatsPanel';
 
 interface MainContainerProps {
   win?: boolean;
@@ -132,6 +133,12 @@ const GameCard: React.FC<OneMatchCardProps> = (
         death={props.game.player.death}
         assist={props.game.player.assist}
         kda={props.game.player.kda}
+      />
+      <PlayerStatsPanel
+        level={props.game.player.level}
+        cs={props.game.player.cs}
+        csPerMinutes={props.game.player.csPerMinuites}
+        kp={props.game.player.kp}
       />
     </MainContainer>
   );

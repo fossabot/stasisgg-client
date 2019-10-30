@@ -75,10 +75,11 @@ const getLaneOrder = (lanePosition: string): number => {
 
 const createTeamComponentsList = (
   { participants }: ParticipantsPanelProps,
-  isLeft: boolean
+  isLeftTeam: boolean
 ): JSX.Element[][] => {
   let team;
-  if (isLeft) {
+  // id <= 5 participants belong to Left team
+  if (isLeftTeam) {
     team = participants.filter(p => p.participantId <= 5);
   } else {
     team = participants.filter(p => p.participantId > 5);

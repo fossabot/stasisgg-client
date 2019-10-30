@@ -45,7 +45,10 @@ const ItemsPanel: FC<ItemsPanelProps> = (props: ItemsPanelProps) => {
           order={item.order < 3 ? item.order + 1 : item.order + 2}
         />
       ) : (
-        <BlankIcon order={item.order < 3 ? item.order + 1 : item.order + 2} />
+        <BlankIcon
+          key={item.order}
+          order={item.order < 3 ? item.order + 1 : item.order + 2}
+        />
       )
     );
 

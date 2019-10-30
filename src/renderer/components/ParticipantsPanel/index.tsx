@@ -90,7 +90,7 @@ const createTeamComponentsList = (
     .map(p => {
       const pList: JSX.Element[] = [];
       pList.push(
-        <ColumnContainer>
+        <ColumnContainer key={p.participantId}>
           <Icon src={p.championIconURL} />
           <Label isYou={p.isYou}>{p.summonerName}</Label>
         </ColumnContainer>

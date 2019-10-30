@@ -32,26 +32,28 @@ type ItemsPanelProps = {
 };
 
 const ItemsPanel: FC<ItemsPanelProps> = (props: ItemsPanelProps) => {
-  const ward = props.items.pop();
-  const listItems = props.items.map(item =>
-    // if spriteURL is "", return blank icon
-    item.spriteURL ? (
-      <Icon
-        key={item.order}
-        src={item.spriteURL}
-        // Specifiy grid order to order correctly
-        order={item.order < 3 ? item.order + 1 : item.order + 2}
-      />
-    ) : (
-      <BlankIcon order={item.order < 3 ? item.order + 1 : item.order + 2} />
-    )
-  );
+  const ward = props.items[6];
+  const listItems = props.items
+    .filter(item => item.order < 6)
+    .map(item =>
+      // if spriteURL is "", return blank icon
+      item.spriteURL ? (
+        <Icon
+          key={item.order}
+          src={item.spriteURL}
+          // Specifiy grid order to order correctly
+          order={item.order < 3 ? item.order + 1 : item.order + 2}
+        />
+      ) : (
+        <BlankIcon order={item.order < 3 ? item.order + 1 : item.order + 2} />
+      )
+    );
 
   return (
     <MainContainer>
       <GridContainer>
         {listItems}
-        <Icon src={ward ? ward.spriteURL : BlankIcon} order={4} />
+        <Icon src={ward.spriteURL} order={4} />
       </GridContainer>
     </MainContainer>
   );

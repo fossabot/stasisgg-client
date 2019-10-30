@@ -8,6 +8,7 @@ import KDA from 'src/renderer/components/KDA';
 import PlayerStatsPanel from 'src/renderer/components/PlayerStatsPanel';
 import ItemsPanel from 'src/renderer/components/ItemsPanel';
 import ParticipantsPanel from 'src/renderer/components/ParticipantsPanel';
+import PlayIcon from 'src/assets/icons/play_circle_outline-24px.svg';
 
 interface MainContainerProps {
   win?: boolean;
@@ -47,6 +48,19 @@ const Label = styled.label<{ color?: string; fontSize?: string }>`
   color: ${({ color }): string => color || 'rgba(255, 255, 255, 0.8)'};
   font-weight: 300;
   font-size: ${({ fontSize }): string => fontSize || '14px'};
+`;
+
+const PlayButtonContainer = styled.div`
+  padding: 0 0 0 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  fill: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  &:hover {
+    fill: rgba(255, 255, 255, 0.4);
+  }
 `;
 
 type OneMatchCardProps = {
@@ -143,6 +157,9 @@ const GameCard: React.FC<OneMatchCardProps> = (
       />
       <ItemsPanel items={props.game.player.items} />
       <ParticipantsPanel participants={props.game.participants} />
+      <PlayButtonContainer>
+        <PlayIcon />
+      </PlayButtonContainer>
     </MainContainer>
   );
 };

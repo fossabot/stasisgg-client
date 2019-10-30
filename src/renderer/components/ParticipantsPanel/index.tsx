@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 
 const MainContainer = styled.div`
@@ -31,6 +31,13 @@ const Icon = styled.img`
   width: 16px;
 `;
 
+const BlankIcon = styled.div`
+  margin: 0;
+  height: 16px;
+  width: 16px;
+  background-color: rgba(0, 0, 0, 0.24);
+`;
+
 const Label = styled.label<{ isYou?: boolean }>`
   color: ${({ isYou }): string =>
     isYou ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)'};
@@ -38,14 +45,16 @@ const Label = styled.label<{ isYou?: boolean }>`
   font-weight: 300;
 `;
 
+type Participant = {
+  participantId: number;
+  championIconURL: string;
+  summonerName: string;
+  lanePosition: string;
+  isYou: boolean;
+};
+
 type ParticipantsPanelProps = {
-  participants: {
-    participantId: number;
-    championIconURL: string;
-    summonerName: string;
-    lanePosition: string;
-    isYou: boolean;
-  }[];
+  participants: Participant[];
 };
 
 const getLaneOrder = (lanePosition: string): number => {
@@ -73,10 +82,10 @@ const getLaneOrder = (lanePosition: string): number => {
   return order;
 };
 
-const createTeamComponentsList = (
-  { participants }: ParticipantsPanelProps,
+const getSortedTeam = (
+  participants: Participant[],
   isLeftTeam: boolean
-): JSX.Element[][] => {
+): Participant[] => {
   let team;
   // id <= 5 participants belong to Left team
   if (isLeftTeam) {
@@ -84,33 +93,63 @@ const createTeamComponentsList = (
   } else {
     team = participants.filter(p => p.participantId > 5);
   }
-
-  const teamComponents = team
-    .sort((a, b) => getLaneOrder(a.lanePosition) - getLaneOrder(b.lanePosition))
-    .map(p => {
-      const pList: JSX.Element[] = [];
-      pList.push(
-        <ColumnContainer key={p.participantId}>
-          <Icon src={p.championIconURL} />
-          <Label isYou={p.isYou}>{p.summonerName}</Label>
-        </ColumnContainer>
-      );
-      return pList;
-    });
-
-  return teamComponents;
+  return team.sort(
+    (a, b) => getLaneOrder(a.lanePosition) - getLaneOrder(b.lanePosition)
+  );
 };
 
 const ParticipantsPanel: FC<ParticipantsPanelProps> = (
   props: ParticipantsPanelProps
 ) => {
-  const leftTeam = createTeamComponentsList(props, true);
-  const rightTeam = createTeamComponentsList(props, false);
+  const [areLoading, setAreLoading] = useState({
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+    6: true,
+    7: true,
+    8: true,
+    9: true,
+    10: true
+  });
+  const updateLoadingState = (participantId: number): void =>
+    setAreLoading(prev => ({ ...prev, [participantId]: false }));
+  const leftTeam = getSortedTeam(props.participants, true);
+  const rightTeam = getSortedTeam(props.participants, false);
 
   return (
     <MainContainer>
-      <RowConatainer>{leftTeam}</RowConatainer>
-      <RowConatainer>{rightTeam}</RowConatainer>
+      <RowConatainer>
+        {leftTeam.map(p => (
+          <ColumnContainer key={p.participantId}>
+            <Icon
+              src={p.championIconURL}
+              onLoad={(): void => updateLoadingState(p.participantId)}
+              style={{
+                display: areLoading[p.participantId] ? 'none' : 'block'
+              }}
+            />
+            {areLoading[p.participantId] && <BlankIcon />}
+            <Label isYou={p.isYou}>{p.summonerName}</Label>
+          </ColumnContainer>
+        ))}
+      </RowConatainer>
+      <RowConatainer>
+        {rightTeam.map(p => (
+          <ColumnContainer key={p.participantId}>
+            <Icon
+              src={p.championIconURL}
+              onLoad={(): void => updateLoadingState(p.participantId)}
+              style={{
+                display: areLoading[p.participantId] ? 'none' : 'block'
+              }}
+            />
+            {areLoading[p.participantId] && <BlankIcon />}
+            <Label isYou={p.isYou}>{p.summonerName}</Label>
+          </ColumnContainer>
+        ))}
+      </RowConatainer>
     </MainContainer>
   );
 };

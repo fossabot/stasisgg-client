@@ -11,6 +11,7 @@ const MainContainer = styled.div`
 `;
 
 const RowConatainer = styled.div`
+  width: 100px;
   display: flex;
   flex-direction: column;
   > * + * {
@@ -43,6 +44,9 @@ const Label = styled.label<{ isYou?: boolean }>`
     isYou ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)'};
   font-size: 13px;
   font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 type Participant = {

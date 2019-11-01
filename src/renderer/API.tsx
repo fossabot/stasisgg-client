@@ -6,6 +6,7 @@ const baseURL =
 export const API = {
   getPlayerProfile: `${baseURL}/get-player-profile`,
   getLast10Matches: `${baseURL}/get-last-10-matches`,
+  getMatches: `${baseURL}/get-matches`,
   getOneMatchCard: `${baseURL}/get-one-match-card`
 };
 
@@ -20,13 +21,13 @@ export const PlayerProfileResponse = t.type({
   message: PlayerProfile
 });
 
-const Last10Matches = t.type({
+const matches = t.type({
   matchesCount: t.number,
   matchIds: t.array(t.number)
 });
 
-export const Last10MatchesResponse = t.type({
-  message: Last10Matches
+export const matchesResponse = t.type({
+  message: matches
 });
 
 const OneMatchCard = t.type({

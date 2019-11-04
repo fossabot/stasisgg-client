@@ -9,12 +9,6 @@ import { RecentGamesStoreContainer } from 'src/renderer/containers/RecentGamesSt
 import MyButton from 'src/renderer/components/MyButton';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 
-// import {
-//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-//   fakerMatch,
-//   faker3901480925
-// } from 'src/renderer/views/RecentGames/fakerMatchMock';
-
 const MarginContainer = styled.div`
   margin: 2em 0 2em 0;
   display: flex;
@@ -68,7 +62,7 @@ const Home = (): JSX.Element => {
               ))}
           </GamesContainer>
           <MyButtonContainer>
-            <MyButton OnClick={() => console.log('clicked!')}>
+            <MyButton OnClick={(): Promise<void> => store.loadMoreGames()}>
               {store.isLoading ? null : 'LOAD'}
               <ScaleLoader
                 height={16}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
 import { API, matchesResponse, OneMatchCardType } from 'src/renderer/API';
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const useRecentGamesStore = () => {
   const profile = PersistentStoreContainer.useContainer();
   const [games, setGames] = useState<OneMatchCardType[]>();
@@ -58,7 +59,24 @@ const useRecentGamesStore = () => {
     getGame();
   }, [fetchRecentGames]);
 
-  return { games, isLoading, setGames };
+  const loadMoreGames = async (): Promise<void> => {
+    if (isLoading) return;
+    setIsLoading(true);
+    const games = await fetchRecentGames(limit, fetchedGames);
+    if (games) {
+      const newGames = games.map(res => res.data.message);
+      setGames(prev => {
+        if (prev) {
+          return prev.concat(newGames);
+        }
+        return prev;
+      });
+      setFetchedGames(fetchedGames + limit);
+    }
+    setIsLoading(false);
+  };
+
+  return { games, isLoading, loadMoreGames };
 };
 
 export const RecentGamesStoreContainer = createContainer(useRecentGamesStore);

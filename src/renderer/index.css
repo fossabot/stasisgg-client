@@ -1,0 +1,7 @@
+.custom-scrollbar::-webkit-scrollbar {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #3b4249e5;
+}

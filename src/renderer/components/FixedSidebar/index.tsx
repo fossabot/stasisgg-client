@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar, { SidebarStyles } from 'react-sidebar';
 import SidebarContent from 'src/renderer/components/FixedSidebar/SidebarContent';
+import 'src/renderer/index.css';
 
 type SidebarProps = {
   docked: boolean;
@@ -26,6 +27,7 @@ const MySidebar: React.FC<SidebarProps> = ({
     shadow={shadow}
     transitions={transitions}
     styles={styles}
+    contentClassName={'custom-scrollbar'}
   >
     {children}
   </Sidebar>

@@ -13,6 +13,13 @@ const MarginContainer = styled.div`
   margin: 2em 0 2em 0;
   display: flex;
   flex-direction: column;
+  overflow-y: overlay;
+  ::-webkit-scrollbar {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2e32;
+  }
 `;
 
 const PageContainer = styled(Container)`

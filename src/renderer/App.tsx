@@ -34,7 +34,9 @@ const App = (): JSX.Element => (
               open={true}
               shadow={false}
               transitions={false}
-              styles={{ content: { background: '#232629' } }}
+              styles={{
+                content: { background: '#232629', overflowY: 'overlay' }
+              }}
             >
               <MainContents />
             </MySidebar>

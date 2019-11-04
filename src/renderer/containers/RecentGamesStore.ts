@@ -7,6 +7,7 @@ import { API, matchesResponse, OneMatchCardType } from 'src/renderer/API';
 const useRecentGamesStore = () => {
   const profile = PersistentStoreContainer.useContainer();
   const [games, setGames] = useState<OneMatchCardType[]>();
+  const [isLoading, setIsLoading] = useState(false);
   const [fetchedGames, setFetchedGames] = useState(0);
   const limit = 10;
 
@@ -46,16 +47,18 @@ const useRecentGamesStore = () => {
 
   useEffect(() => {
     async function getGame(): Promise<void> {
+      setIsLoading(true);
       const games = await fetchRecentGames(limit, 0);
       if (games) {
         setGames(games.map(res => res.data.message));
         setFetchedGames(10);
       }
+      setIsLoading(false);
     }
     getGame();
   }, [fetchRecentGames]);
 
-  return { games, setGames };
+  return { games, isLoading, setGames };
 };
 
 export const RecentGamesStoreContainer = createContainer(useRecentGamesStore);

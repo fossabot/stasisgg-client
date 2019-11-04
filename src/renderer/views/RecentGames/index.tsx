@@ -6,6 +6,9 @@ import Header from 'src/renderer/components/Header';
 import RoleSelecter from 'src/renderer/components/RoleSelecter';
 import GameCard from 'src/renderer/components/GameCard';
 import { RecentGamesStoreContainer } from 'src/renderer/containers/RecentGamesStore';
+import MyButton from 'src/renderer/components/MyButton';
+import ScaleLoader from 'react-spinners/ScaleLoader';
+
 // import {
 //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 //   fakerMatch,
@@ -13,7 +16,6 @@ import { RecentGamesStoreContainer } from 'src/renderer/containers/RecentGamesSt
 // } from 'src/renderer/views/RecentGames/fakerMatchMock';
 
 const MarginContainer = styled.div`
-  height: calc(100vh - 4em);
   margin: 2em 0 2em 0;
   display: flex;
   flex-direction: column;
@@ -42,8 +44,14 @@ const GamesContainer = styled.div`
   }
 `;
 
+const MyButtonContainer = styled.div`
+  margin-top: 1em;
+  min-width: 200px;
+  align-self: center;
+`;
+
 const Home = (): JSX.Element => {
-  const recentGmesStore = RecentGamesStoreContainer.useContainer();
+  const store = RecentGamesStoreContainer.useContainer();
 
   return (
     <MainPageTheme>
@@ -54,11 +62,21 @@ const Home = (): JSX.Element => {
             <RoleSelecter />
           </HeaderContainer>
           <GamesContainer>
-            {recentGmesStore.games &&
-              recentGmesStore.games.map(game => (
+            {store.games &&
+              store.games.map(game => (
                 <GameCard key={game.match.gameCreationUnix} game={game} />
               ))}
           </GamesContainer>
+          <MyButtonContainer>
+            <MyButton OnClick={() => console.log('clicked!')}>
+              {store.isLoading ? null : 'LOAD'}
+              <ScaleLoader
+                height={16}
+                color={'rgba(233, 231, 235, 1.0)'}
+                loading={store.isLoading}
+              />
+            </MyButton>
+          </MyButtonContainer>
         </PageContainer>
       </MarginContainer>
     </MainPageTheme>

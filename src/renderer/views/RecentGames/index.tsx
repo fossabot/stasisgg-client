@@ -6,12 +6,7 @@ import { MainPageTheme } from 'src/renderer/components/theme';
 import Header from 'src/renderer/components/Header';
 import RoleSelecter from 'src/renderer/components/RoleSelecter';
 import GameCard from 'src/renderer/components/GameCard';
-import {
-  API,
-  matchesResponse,
-  OneMatchCardResponse,
-  OneMatchCardType
-} from 'src/renderer/API';
+import { API, matchesResponse, OneMatchCardType } from 'src/renderer/API';
 import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
 // import {
 //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -53,6 +48,7 @@ const Home = (): JSX.Element => {
   const profile = PersistentStoreContainer.useContainer();
   const [games, setGames] = useState<OneMatchCardType[]>();
   useEffect(() => {
+    let cleanUp = false;
     async function getGameIds(): Promise<void> {
       const ids = await axios.get(API.getMatches, {
         params: {
@@ -74,10 +70,16 @@ const Home = (): JSX.Element => {
             })
           )
         );
-        setGames(games.map(res => res.data.message));
+        if (!cleanUp) {
+          setGames(games.map(res => res.data.message));
+        }
       }
     }
     getGameIds();
+
+    return (): void => {
+      cleanUp = true;
+    };
   }, [
     profile.store.region,
     profile.store.summoner_name,

@@ -20,6 +20,7 @@ const RowConatainer = styled.div`
 `;
 
 const ColumnContainer = styled.div`
+  min-height: 19px;
   display: flex;
   align-items: center;
   > * + * {

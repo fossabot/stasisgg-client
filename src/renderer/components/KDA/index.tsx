@@ -26,11 +26,13 @@ type KDAProps = {
   kill: number;
   death: number;
   assist: number;
-  kda: number;
+  kda: number | null;
 };
 const KDA: FC<KDAProps> = (props: KDAProps) => {
   let kdaStr;
-  if (props.kda.toString().length === 1) {
+  if (props.kda === null) {
+    kdaStr = 'Perfect';
+  } else if (props.kda.toString().length === 1) {
     kdaStr = `${props.kda}.0 KDA`;
   } else {
     kdaStr = `${props.kda.toString()} KDA`;

@@ -15,9 +15,10 @@ interface MainContainerProps {
 }
 
 const MainContainer = styled.div<MainContainerProps>`
-  padding: 1em;
+  padding: 0.8em;
   display: flex;
   margin: 0 auto;
+  width: 945px;
   background-color: ${(props: MainContainerProps): string =>
     props.win ? 'rgba(37, 57, 122, 0.5)' : 'rgba(176, 37, 47, 0.5)'};
   border: 1px solid rgba(60, 60, 60, 1);

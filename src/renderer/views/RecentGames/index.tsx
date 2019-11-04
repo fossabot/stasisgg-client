@@ -44,6 +44,9 @@ const HeaderContainer = styled.div`
 const GamesContainer = styled.div`
   display: flex;
   flex-direction: column;
+  > * + * {
+    margin-top: 0.5em;
+  }
 `;
 
 const getOneMatchCard = async (

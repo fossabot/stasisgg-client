@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Container } from '@material-ui/core';
-import axios from 'axios';
 import { MainPageTheme } from 'src/renderer/components/theme';
 import Header from 'src/renderer/components/Header';
 import RoleSelecter from 'src/renderer/components/RoleSelecter';
 import GameCard from 'src/renderer/components/GameCard';
-import { API, matchesResponse, OneMatchCardType } from 'src/renderer/API';
-import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
+import { RecentGamesStoreContainer } from 'src/renderer/containers/RecentGamesStore';
 // import {
 //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 //   fakerMatch,
@@ -45,46 +43,7 @@ const GamesContainer = styled.div`
 `;
 
 const Home = (): JSX.Element => {
-  const profile = PersistentStoreContainer.useContainer();
-  const [games, setGames] = useState<OneMatchCardType[]>();
-  useEffect(() => {
-    let cleanUp = false;
-    async function getGameIds(): Promise<void> {
-      const ids = await axios.get(API.getMatches, {
-        params: {
-          region: profile.store.region,
-          summonerName: profile.store.summoner_name,
-          limit: 10,
-          offset: 0
-        }
-      });
-      if (matchesResponse.is(ids.data)) {
-        const games = await Promise.all(
-          ids.data.message.matchIds.map(id =>
-            axios.get(API.getOneMatchCard, {
-              params: {
-                region: profile.store.region,
-                summonerId: profile.store.summoner_id,
-                gameId: id
-              }
-            })
-          )
-        );
-        if (!cleanUp) {
-          setGames(games.map(res => res.data.message));
-        }
-      }
-    }
-    getGameIds();
-
-    return (): void => {
-      cleanUp = true;
-    };
-  }, [
-    profile.store.region,
-    profile.store.summoner_name,
-    profile.store.summoner_id
-  ]);
+  const recentGmesStore = RecentGamesStoreContainer.useContainer();
 
   return (
     <MainPageTheme>
@@ -95,8 +54,8 @@ const Home = (): JSX.Element => {
             <RoleSelecter />
           </HeaderContainer>
           <GamesContainer>
-            {games &&
-              games.map(game => (
+            {recentGmesStore.games &&
+              recentGmesStore.games.map(game => (
                 <GameCard key={game.match.gameCreationUnix} game={game} />
               ))}
           </GamesContainer>

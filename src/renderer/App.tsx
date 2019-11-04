@@ -7,6 +7,7 @@ import { createGlobalStyle } from 'styled-components';
 import { StylesProvider } from '@material-ui/styles';
 import { PersistentStoreContainer } from 'src/renderer/containers/PersistentStore';
 import { ProfileStoreContainer } from 'src/renderer/containers/ProfileStore';
+import { RecentGamesStoreContainer } from 'src/renderer/containers/RecentGamesStore';
 import Fonts from 'src/renderer/components/Fonts';
 
 const GlobalStyles = createGlobalStyle`
@@ -27,15 +28,17 @@ const App = (): JSX.Element => (
     <MemoryRouter>
       <PersistentStoreContainer.Provider>
         <ProfileStoreContainer.Provider>
-          <MySidebar
-            docked={true}
-            open={true}
-            shadow={false}
-            transitions={false}
-            styles={{ content: { background: '#232629' } }}
-          >
-            <MainContents />
-          </MySidebar>
+          <RecentGamesStoreContainer.Provider>
+            <MySidebar
+              docked={true}
+              open={true}
+              shadow={false}
+              transitions={false}
+              styles={{ content: { background: '#232629' } }}
+            >
+              <MainContents />
+            </MySidebar>
+          </RecentGamesStoreContainer.Provider>
         </ProfileStoreContainer.Provider>
       </PersistentStoreContainer.Provider>
     </MemoryRouter>

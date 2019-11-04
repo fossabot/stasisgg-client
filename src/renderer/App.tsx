@@ -14,7 +14,9 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', 'Noto Sans JP', sans-serif;
   }
   html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
   }
 `;
 
@@ -30,6 +32,7 @@ const App = (): JSX.Element => (
             open={true}
             shadow={false}
             transitions={false}
+            styles={{ content: { background: '#232629' } }}
           >
             <MainContents />
           </MySidebar>

@@ -49,34 +49,8 @@ const GamesContainer = styled.div`
   }
 `;
 
-const getOneMatchCard = async (
-  region: string,
-  summonerId: string,
-  gameId: number
-): Promise<OneMatchCardType> => {
-  return new Promise((resolve, reject): void => {
-    axios
-      .get(API.getOneMatchCard, {
-        params: {
-          region: region,
-          summonerId: summonerId,
-          gameId: gameId
-        }
-      })
-      .then(r => {
-        if (OneMatchCardResponse.is(r.data)) {
-          resolve(r.data.message);
-        } else {
-          throw new Error('invalid response');
-        }
-      })
-      .catch(e => reject(e.response));
-  });
-};
-
 const Home = (): JSX.Element => {
   const profile = PersistentStoreContainer.useContainer();
-  const [gameIds, setGameIds] = useState([0]);
   const [games, setGames] = useState<OneMatchCardType[]>();
   useEffect(() => {
     async function getGameIds(): Promise<void> {
@@ -109,15 +83,6 @@ const Home = (): JSX.Element => {
     profile.store.summoner_name,
     profile.store.summoner_id
   ]);
-
-  // let getCardRes: OneMatchCardType[] = [];
-  // if (matchesResponse.is(getMatchesRes)) {
-  //   getCardRes = await Promise.all(
-  //     getMatchesRes.message.matchIds.map(gameId =>
-  //       getOneMatchCard(profile.store.region, profile.store.summoner_id, gameId)
-  //     )
-  //   );
-  // }
 
   return (
     <MainPageTheme>
